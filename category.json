@@ -1,0 +1,62 @@
+[
+  {
+    "_id": "664bfe251c9c8b3c80a1a001",
+    "name": "Electronics",
+    "createdAt": "2025-05-20T08:00:00.000Z",
+    "updatedAt": "2025-05-20T08:00:00.000Z"
+  },
+  {
+    "_id": "664bfe251c9c8b3c80a1a002",
+    "name": "Clothing",
+    "createdAt": "2025-05-20T08:00:00.000Z",
+    "updatedAt": "2025-05-20T08:00:00.000Z"
+  },
+  {
+    "_id": "664bfe251c9c8b3c80a1a003",
+    "name": "Home & Kitchen",
+    "createdAt": "2025-05-20T08:00:00.000Z",
+    "updatedAt": "2025-05-20T08:00:00.000Z"
+  },
+  {
+    "_id": "664bfe251c9c8b3c80a1a004",
+    "name": "Books",
+    "createdAt": "2025-05-20T08:00:00.000Z",
+    "updatedAt": "2025-05-20T08:00:00.000Z"
+  },
+  {
+    "_id": "664bfe251c9c8b3c80a1a005",
+    "name": "Sports & Outdoors",
+    "createdAt": "2025-05-20T08:00:00.000Z",
+    "updatedAt": "2025-05-20T08:00:00.000Z"
+  },
+  {
+    "_id": "664bfe251c9c8b3c80a1a006",
+    "name": "Beauty & Personal Care",
+    "createdAt": "2025-05-20T08:00:00.000Z",
+    "updatedAt": "2025-05-20T08:00:00.000Z"
+  },
+  {
+    "_id": "664bfe251c9c8b3c80a1a007",
+    "name": "Toys & Games",
+    "createdAt": "2025-05-20T08:00:00.000Z",
+    "updatedAt": "2025-05-20T08:00:00.000Z"
+  },
+  {
+    "_id": "664bfe251c9c8b3c80a1a008",
+    "name": "Health",
+    "createdAt": "2025-05-20T08:00:00.000Z",
+    "updatedAt": "2025-05-20T08:00:00.000Z"
+  },
+  {
+    "_id": "664bfe251c9c8b3c80a1a009",
+    "name": "Automotive",
+    "createdAt": "2025-05-20T08:00:00.000Z",
+    "updatedAt": "2025-05-20T08:00:00.000Z"
+  },
+  {
+    "_id": "664bfe251c9c8b3c80a1a00a",
+    "name": "Grocery",
+    "createdAt": "2025-05-20T08:00:00.000Z",
+    "updatedAt": "2025-05-20T08:00:00.000Z"
+  }
+]
