@@ -1,41 +1,31 @@
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 
-const questionSchema = new mongoose.Schema(
-  {
-    text: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    options: {
-      type: [String],
-      required: true,
-      validate: {
-        validator: (v) => {
-          return v.length >= 4 // 4 options
-        },
-        message: "Question must have at least 4 options",
+const questionSchema = new mongoose.Schema({
+  text: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  options: {
+    type: [String],
+    validate: [arr => arr.length >= 2, "At least 2 options are required"],
+    required: true,
+  },
+  correctOption: {
+    type: Number,
+    required: true,
+    validate: {
+      validator: function (index) {
+        return this.options && index >= 0 && index < this.options.length;
       },
-    },
-    correctOption: {
-      type: Number,
-      required: true,
-      validate: {
-        validator: function (v) {
-          return v >= 0 && v < this.options.length
-        },
-        message: "Correct option index must be valid",
-      },
-    },
-    category: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Category",
-      required: true,
+      message: "Correct option index is out of bounds",
     },
   },
-  { timestamps: true },
-)
+  category: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Category",
+    required: true,
+  }
+}, { timestamps: true });
 
-const Question = mongoose.model("Question", questionSchema)
-
-module.exports = Question
+module.exports = mongoose.model("Question", questionSchema);

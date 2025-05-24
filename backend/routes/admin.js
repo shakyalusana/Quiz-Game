@@ -18,14 +18,22 @@ router.get("/dashboard", [auth, adminAuth], async (req, res) => {
     const totalPlayers = await User.countDocuments({ role: "player" })
     const totalQuizzes = await QuizResult.countDocuments()
 
-    // Get recent players
+    // Get recent players (safe divide by zero)
     const recentPlayers = await QuizResult.aggregate([
       { $sort: { date: -1 } },
       {
         $group: {
           _id: "$player",
           lastQuizDate: { $first: "$date" },
-          lastScore: { $first: { $multiply: [{ $divide: ["$score", "$totalQuestions"] }, 100] } },
+          lastScore: {
+            $first: {
+              $cond: [
+                { $eq: ["$totalQuestions", 0] },
+                0,
+                { $multiply: [{ $divide: ["$score", "$totalQuestions"] }, 100] }
+              ]
+            }
+          },
         },
       },
       { $limit: 5 },
@@ -66,10 +74,8 @@ router.get("/dashboard", [auth, adminAuth], async (req, res) => {
 // Get leaderboard
 router.get("/leaderboard", [auth, adminAuth], async (req, res) => {
   try {
-    // Get all quiz results
     const results = await QuizResult.find().populate("player", "name").populate("category", "name")
 
-    // Group results by player and category
     const playerStats = {}
 
     results.forEach((result) => {
@@ -77,9 +83,8 @@ router.get("/leaderboard", [auth, adminAuth], async (req, res) => {
       const playerName = result.player.name
       const categoryId = result.category._id.toString()
       const categoryName = result.category.name
-      const score = (result.score / result.totalQuestions) * 100
+      const score = result.totalQuestions > 0 ? (result.score / result.totalQuestions) * 100 : 0
 
-      // Initialize player stats if not exists
       if (!playerStats[playerId]) {
         playerStats[playerId] = {
           _id: playerId,
@@ -91,12 +96,10 @@ router.get("/leaderboard", [auth, adminAuth], async (req, res) => {
         }
       }
 
-      // Update player stats
       playerStats[playerId].quizzesTaken++
       playerStats[playerId].totalScore += score
       playerStats[playerId].bestScore = Math.max(playerStats[playerId].bestScore, score)
 
-      // Initialize category stats if not exists
       if (!playerStats[playerId].categories[categoryId]) {
         playerStats[playerId].categories[categoryId] = {
           categoryId,
@@ -107,21 +110,17 @@ router.get("/leaderboard", [auth, adminAuth], async (req, res) => {
         }
       }
 
-      // Update category stats
       playerStats[playerId].categories[categoryId].quizzesTaken++
       playerStats[playerId].categories[categoryId].totalScore += score
       playerStats[playerId].categories[categoryId].bestScore = Math.max(
         playerStats[playerId].categories[categoryId].bestScore,
-        score,
+        score
       )
     })
 
-    // Convert to array and calculate averages
     const leaderboard = Object.values(playerStats).map((player) => {
-      // Calculate player average score
       player.averageScore = player.quizzesTaken > 0 ? player.totalScore / player.quizzesTaken : 0
 
-      // Calculate category average scores
       Object.values(player.categories).forEach((category) => {
         category.averageScore = category.quizzesTaken > 0 ? category.totalScore / category.quizzesTaken : 0
       })
@@ -129,7 +128,6 @@ router.get("/leaderboard", [auth, adminAuth], async (req, res) => {
       return player
     })
 
-    // Sort by average score (descending)
     leaderboard.sort((a, b) => b.averageScore - a.averageScore)
 
     res.json(leaderboard)
@@ -142,21 +140,18 @@ router.get("/leaderboard", [auth, adminAuth], async (req, res) => {
 // Get all players
 router.get("/players", [auth, adminAuth], async (req, res) => {
   try {
-    // Get all players
     const players = await User.find({ role: "player" }, "-password")
 
-    // Get quiz statistics for each player
     const playerStats = await Promise.all(
       players.map(async (player) => {
         const quizResults = await QuizResult.find({ player: player._id })
 
-        // Calculate statistics
         const quizzesTaken = quizResults.length
         let totalScore = 0
         let bestScore = 0
 
         quizResults.forEach((quiz) => {
-          const score = (quiz.score / quiz.totalQuestions) * 100
+          const score = quiz.totalQuestions > 0 ? (quiz.score / quiz.totalQuestions) * 100 : 0
           totalScore += score
           bestScore = Math.max(bestScore, score)
         })
@@ -174,7 +169,6 @@ router.get("/players", [auth, adminAuth], async (req, res) => {
       }),
     )
 
-    // Sort by average score (descending)
     playerStats.sort((a, b) => b.averageScore - a.averageScore)
 
     res.json(playerStats)
@@ -187,37 +181,33 @@ router.get("/players", [auth, adminAuth], async (req, res) => {
 // Get player details
 router.get("/players/:id", [auth, adminAuth], async (req, res) => {
   try {
-    // Get player
     const player = await User.findById(req.params.id, "-password")
 
     if (!player) {
       return res.status(404).json({ message: "Player not found" })
     }
 
-    // Get quiz results
     const quizResults = await QuizResult.find({ player: player._id }).populate("category", "name").sort("-date")
 
-    // Calculate statistics
     const quizzesTaken = quizResults.length
     let totalScore = 0
     let bestScore = 0
 
     quizResults.forEach((quiz) => {
-      const score = (quiz.score / quiz.totalQuestions) * 100
+      const score = quiz.totalQuestions > 0 ? (quiz.score / quiz.totalQuestions) * 100 : 0
       totalScore += score
       bestScore = Math.max(bestScore, score)
     })
 
     const averageScore = quizzesTaken > 0 ? totalScore / quizzesTaken : 0
 
-    // Format recent quizzes
     const recentQuizzes = quizResults.slice(0, 10).map((quiz) => ({
       _id: quiz._id,
       date: quiz.date,
       categoryName: quiz.category.name,
       score: quiz.score,
       totalQuestions: quiz.totalQuestions,
-      scorePercentage: Math.round((quiz.score / quiz.totalQuestions) * 100),
+      scorePercentage: quiz.totalQuestions > 0 ? Math.round((quiz.score / quiz.totalQuestions) * 100) : 0,
     }))
 
     res.json({
@@ -239,17 +229,13 @@ router.get("/players/:id", [auth, adminAuth], async (req, res) => {
 // Delete player
 router.delete("/players/:id", [auth, adminAuth], async (req, res) => {
   try {
-    // Get player
     const player = await User.findById(req.params.id)
 
     if (!player) {
       return res.status(404).json({ message: "Player not found" })
     }
 
-    // Delete player's quiz results
     await QuizResult.deleteMany({ player: player._id })
-
-    // Delete player
     await player.remove()
 
     res.json({ message: "Player deleted successfully" })

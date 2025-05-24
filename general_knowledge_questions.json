@@ -1,0 +1,552 @@
+[
+  {
+    "text": "What is the capital of France?",
+    "options": [
+      "Paris",
+      "London",
+      "Rome",
+      "Berlin"
+    ],
+    "correctOption": 0,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "Which planet is known as the Red Planet?",
+    "options": [
+      "Earth",
+      "Mars",
+      "Jupiter",
+      "Saturn"
+    ],
+    "correctOption": 1,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "Who wrote the play 'Romeo and Juliet'?",
+    "options": [
+      "William Shakespeare",
+      "Charles Dickens",
+      "Jane Austen",
+      "Leo Tolstoy"
+    ],
+    "correctOption": 0,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "What is the largest ocean on Earth?",
+    "options": [
+      "Atlantic Ocean",
+      "Indian Ocean",
+      "Arctic Ocean",
+      "Pacific Ocean"
+    ],
+    "correctOption": 3,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "In which country are the Pyramids of Giza located?",
+    "options": [
+      "Mexico",
+      "India",
+      "Egypt",
+      "Peru"
+    ],
+    "correctOption": 2,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "Which element has the chemical symbol 'O'?",
+    "options": [
+      "Oxygen",
+      "Gold",
+      "Iron",
+      "Hydrogen"
+    ],
+    "correctOption": 0,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "Who painted the Mona Lisa?",
+    "options": [
+      "Vincent van Gogh",
+      "Leonardo da Vinci",
+      "Pablo Picasso",
+      "Claude Monet"
+    ],
+    "correctOption": 1,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "Which country is known as the Land of the Rising Sun?",
+    "options": [
+      "China",
+      "South Korea",
+      "Thailand",
+      "Japan"
+    ],
+    "correctOption": 3,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "What is the hardest natural substance on Earth?",
+    "options": [
+      "Gold",
+      "Iron",
+      "Diamond",
+      "Silver"
+    ],
+    "correctOption": 2,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "Which is the smallest continent by land area?",
+    "options": [
+      "Europe",
+      "Australia",
+      "Antarctica",
+      "South America"
+    ],
+    "correctOption": 1,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "Which country hosted the 2016 Summer Olympics?",
+    "options": [
+      "China",
+      "Brazil",
+      "Russia",
+      "UK"
+    ],
+    "correctOption": 1,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "Who discovered penicillin?",
+    "options": [
+      "Isaac Newton",
+      "Albert Einstein",
+      "Alexander Fleming",
+      "Marie Curie"
+    ],
+    "correctOption": 2,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "Which language has the most native speakers worldwide?",
+    "options": [
+      "English",
+      "Mandarin Chinese",
+      "Spanish",
+      "Hindi"
+    ],
+    "correctOption": 1,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "What is the tallest mountain in the world?",
+    "options": [
+      "K2",
+      "Mount Everest",
+      "Kangchenjunga",
+      "Makalu"
+    ],
+    "correctOption": 1,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "Who was the first man to walk on the moon?",
+    "options": [
+      "Buzz Aldrin",
+      "Neil Armstrong",
+      "Yuri Gagarin",
+      "Michael Collins"
+    ],
+    "correctOption": 1,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "Which continent has the most countries?",
+    "options": [
+      "Asia",
+      "Africa",
+      "Europe",
+      "South America"
+    ],
+    "correctOption": 1,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "In which year did World War II end?",
+    "options": [
+      "1940",
+      "1943",
+      "1945",
+      "1950"
+    ],
+    "correctOption": 2,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "What is the main ingredient in guacamole?",
+    "options": [
+      "Tomato",
+      "Avocado",
+      "Onion",
+      "Cucumber"
+    ],
+    "correctOption": 1,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "Which country invented tea?",
+    "options": [
+      "India",
+      "England",
+      "China",
+      "Japan"
+    ],
+    "correctOption": 2,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "Which gas do plants absorb from the atmosphere?",
+    "options": [
+      "Oxygen",
+      "Carbon Dioxide",
+      "Nitrogen",
+      "Hydrogen"
+    ],
+    "correctOption": 1,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "What is the capital of France? (candidate)",
+    "options": [
+      "Paris",
+      "London",
+      "Rome",
+      "Berlin"
+    ],
+    "correctOption": 0,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "What is the capital of France? (language)",
+    "options": [
+      "Paris",
+      "London",
+      "Rome",
+      "Berlin"
+    ],
+    "correctOption": 0,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "Which language has the most native speakers worldwide? (include)",
+    "options": [
+      "English",
+      "Mandarin Chinese",
+      "Spanish",
+      "Hindi"
+    ],
+    "correctOption": 1,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "Which is the smallest continent by land area? (least)",
+    "options": [
+      "Europe",
+      "Australia",
+      "Antarctica",
+      "South America"
+    ],
+    "correctOption": 1,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "Who was the first man to walk on the moon? (parent)",
+    "options": [
+      "Buzz Aldrin",
+      "Neil Armstrong",
+      "Yuri Gagarin",
+      "Michael Collins"
+    ],
+    "correctOption": 1,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "What is the capital of France? (gun)",
+    "options": [
+      "Paris",
+      "London",
+      "Rome",
+      "Berlin"
+    ],
+    "correctOption": 0,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "Who wrote the play 'Romeo and Juliet'? (not)",
+    "options": [
+      "William Shakespeare",
+      "Charles Dickens",
+      "Jane Austen",
+      "Leo Tolstoy"
+    ],
+    "correctOption": 0,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "Which country is known as the Land of the Rising Sun? (project)",
+    "options": [
+      "China",
+      "South Korea",
+      "Thailand",
+      "Japan"
+    ],
+    "correctOption": 3,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "Which language has the most native speakers worldwide? (include) (reason)",
+    "options": [
+      "English",
+      "Mandarin Chinese",
+      "Spanish",
+      "Hindi"
+    ],
+    "correctOption": 1,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "Which country is known as the Land of the Rising Sun? (project) (matter)",
+    "options": [
+      "China",
+      "South Korea",
+      "Thailand",
+      "Japan"
+    ],
+    "correctOption": 3,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "Which language has the most native speakers worldwide? (include) (reason) (stage)",
+    "options": [
+      "English",
+      "Mandarin Chinese",
+      "Spanish",
+      "Hindi"
+    ],
+    "correctOption": 1,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "Who was the first man to walk on the moon? (parent) (ready)",
+    "options": [
+      "Buzz Aldrin",
+      "Neil Armstrong",
+      "Yuri Gagarin",
+      "Michael Collins"
+    ],
+    "correctOption": 1,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "What is the largest ocean on Earth? (just)",
+    "options": [
+      "Atlantic Ocean",
+      "Indian Ocean",
+      "Arctic Ocean",
+      "Pacific Ocean"
+    ],
+    "correctOption": 3,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "Which country hosted the 2016 Summer Olympics? (same)",
+    "options": [
+      "China",
+      "Brazil",
+      "Russia",
+      "UK"
+    ],
+    "correctOption": 1,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "Which country hosted the 2016 Summer Olympics? (since)",
+    "options": [
+      "China",
+      "Brazil",
+      "Russia",
+      "UK"
+    ],
+    "correctOption": 1,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "Which country hosted the 2016 Summer Olympics? (same) (hear)",
+    "options": [
+      "China",
+      "Brazil",
+      "Russia",
+      "UK"
+    ],
+    "correctOption": 1,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "Which country is known as the Land of the Rising Sun? (project) (test)",
+    "options": [
+      "China",
+      "South Korea",
+      "Thailand",
+      "Japan"
+    ],
+    "correctOption": 3,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "Which country hosted the 2016 Summer Olympics? (same) (hear) (time)",
+    "options": [
+      "China",
+      "Brazil",
+      "Russia",
+      "UK"
+    ],
+    "correctOption": 1,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "Which country is known as the Land of the Rising Sun? (project) (yourself)",
+    "options": [
+      "China",
+      "South Korea",
+      "Thailand",
+      "Japan"
+    ],
+    "correctOption": 3,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "Who was the first man to walk on the moon? (short)",
+    "options": [
+      "Buzz Aldrin",
+      "Neil Armstrong",
+      "Yuri Gagarin",
+      "Michael Collins"
+    ],
+    "correctOption": 1,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "Which country hosted the 2016 Summer Olympics? (same) (hear) (time) (paper)",
+    "options": [
+      "China",
+      "Brazil",
+      "Russia",
+      "UK"
+    ],
+    "correctOption": 1,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "Which language has the most native speakers worldwide? (include) (reason) (describe)",
+    "options": [
+      "English",
+      "Mandarin Chinese",
+      "Spanish",
+      "Hindi"
+    ],
+    "correctOption": 1,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "Which gas do plants absorb from the atmosphere? (personal)",
+    "options": [
+      "Oxygen",
+      "Carbon Dioxide",
+      "Nitrogen",
+      "Hydrogen"
+    ],
+    "correctOption": 1,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "In which year did World War II end? (easy)",
+    "options": [
+      "1940",
+      "1943",
+      "1945",
+      "1950"
+    ],
+    "correctOption": 2,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "Which country hosted the 2016 Summer Olympics? (same) (might)",
+    "options": [
+      "China",
+      "Brazil",
+      "Russia",
+      "UK"
+    ],
+    "correctOption": 1,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "Who was the first man to walk on the moon? (parent) (administration)",
+    "options": [
+      "Buzz Aldrin",
+      "Neil Armstrong",
+      "Yuri Gagarin",
+      "Michael Collins"
+    ],
+    "correctOption": 1,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "Which country hosted the 2016 Summer Olympics? (same) (hear) (time) (item)",
+    "options": [
+      "China",
+      "Brazil",
+      "Russia",
+      "UK"
+    ],
+    "correctOption": 1,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "Which country is known as the Land of the Rising Sun? (project) (yourself) (simply)",
+    "options": [
+      "China",
+      "South Korea",
+      "Thailand",
+      "Japan"
+    ],
+    "correctOption": 3,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "Which element has the chemical symbol 'O'? (picture)",
+    "options": [
+      "Oxygen",
+      "Gold",
+      "Iron",
+      "Hydrogen"
+    ],
+    "correctOption": 0,
+    "category": "6831790b163c0f028dd012c6"
+  },
+  {
+    "text": "Who discovered penicillin? (degree)",
+    "options": [
+      "Isaac Newton",
+      "Albert Einstein",
+      "Alexander Fleming",
+      "Marie Curie"
+    ],
+    "correctOption": 2,
+    "category": "6831790b163c0f028dd012c6"
+  }
+]

@@ -1,9 +1,9 @@
-"use client"
 
 import { useState, useEffect } from "react"
 import axios from "axios"
 import { useAuth } from "../../contexts/AuthContext"
 import Navbar from "../../components/Navbar"
+
 
 function AdminLeaderboard() {
   const { user } = useAuth()
