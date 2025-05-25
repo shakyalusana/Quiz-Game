@@ -31,8 +31,8 @@ mongoose.set('strictQuery', true);
 const mongoURI = process.env.MONGODB_URI || 'mongodb://localhost:27017/quiz_game';
 mongoose
   .connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('✅ Connected to MongoDB'))
-  .catch((err) => console.error('❌ Could not connect to MongoDB', err));
+  .then(() => console.log('Connected to MongoDB'))
+  .catch((err) => console.error('Could not connect to MongoDB', err));
 
 // Routes
 app.use('/api/auth', authRoutes);
@@ -42,6 +42,9 @@ app.use('/api/quiz', quizRoutes);
 app.use('/api/player', playerRoutes);
 app.use('/api/admin', adminRoutes);
 
+app.get('/test', (req, res) => {
+  res.json({ message: 'Backend is working!' });
+});
 // Error handler
 app.use((err, req, res, next) => {
   console.error(err.stack);

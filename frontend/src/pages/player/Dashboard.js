@@ -6,7 +6,7 @@ import { useAuth } from "../../contexts/AuthContext"
 import Navbar from "../../components/Navbar"
 
 function PlayerDashboard() {
-  const { user, logout } = useAuth()
+  const { user } = useAuth()
   const navigate = useNavigate()
   const [categories, setCategories] = useState([])
   const [selectedCategory, setSelectedCategory] = useState("")
@@ -18,6 +18,9 @@ function PlayerDashboard() {
     const fetchCategories = async () => {
       try {
         const token = localStorage.getItem("token")
+        console.log("token:", token)
+        const decodedToken = JSON.parse(atob(token.split('.')[1]))
+        console.log("Decoded token:", decodedToken)
         const response = await axios.get("http://localhost:5000/api/categories", {
           headers: { Authorization: `Bearer ${token}` },
         })
@@ -42,7 +45,7 @@ function PlayerDashboard() {
         categoryId: selectedCategory,
         questionCount,
       },
-    })
+    })  
   }
 
   const handleViewHistory = () => {

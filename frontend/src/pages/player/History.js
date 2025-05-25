@@ -1,47 +1,61 @@
-
-import { useState, useEffect } from "react"
-import { useNavigate } from "react-router-dom"
-import axios from "axios"
-import { useAuth } from "../../contexts/AuthContext"
-import Navbar from "../../components/Navbar"
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import Navbar from "../../components/Navbar";
 
 function PlayerHistory() {
-  const { user } = useAuth()
-  const navigate = useNavigate()
-  const [quizHistory, setQuizHistory] = useState([])
+  const navigate = useNavigate();
+  const [quizHistory, setQuizHistory] = useState([]);
   const [stats, setStats] = useState({
     totalQuizzes: 0,
-    averageScore: 0,
+    averageScore: 0,  // default to 0 to avoid null issues
     bestCategory: "",
     worstCategory: "",
-  })
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState("")
+  });
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchHistory = async () => {
       try {
-        const token = localStorage.getItem("token")
+        const token = localStorage.getItem("token");
+        if (!token) {
+          setError("No token found. Please login again.");
+          setLoading(false);
+          return;
+        }
+
+        const decodedToken = JSON.parse(atob(token.split('.')[1]));
+        console.log("Decoded token:", decodedToken);
+
         const response = await axios.get("http://localhost:5000/api/player/history", {
-          headers: { Authorization: `Bearer ${token}` },
-        })
+          headers: { 
+            Authorization: `Bearer ${token}`, 
+            "x-decoded-token": JSON.stringify(decodedToken)  // custom header with decoded token
+          },
+        });
 
-        setQuizHistory(response.data.history)
-        setStats(response.data.stats)
+        setQuizHistory(response.data.history);
+        setStats({
+          totalQuizzes: response.data.stats.totalQuizzes ?? 0,
+          averageScore: response.data.stats.averageScore ?? 0,
+          bestCategory: response.data.stats.bestCategory || "",
+          worstCategory: response.data.stats.worstCategory || "",
+        });
       } catch (error) {
-        setError("Failed to load history")
-        console.error(error)
+        setError("Failed to load history");
+        console.error(error);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
-    }
+    };
 
-    fetchHistory()
-  }, [])
+    fetchHistory();
+  }, []);
 
   const handleBackToDashboard = () => {
-    navigate("/player/dashboard")
-  }
+    navigate("/player/dashboard");
+  };
 
   if (loading) {
     return (
@@ -51,7 +65,7 @@ function PlayerHistory() {
           <div className="text-center">Loading history...</div>
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -69,7 +83,11 @@ function PlayerHistory() {
             </button>
           </div>
 
-          {error && <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">{error}</div>}
+          {error && (
+            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+              {error}
+            </div>
+          )}
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
             <div className="bg-purple-50 p-4 rounded-lg">
@@ -79,7 +97,8 @@ function PlayerHistory() {
                   <span className="font-medium">Total Quizzes:</span> {stats.totalQuizzes}
                 </p>
                 <p>
-                  <span className="font-medium">Average Score:</span> {stats.averageScore.toFixed(2)}%
+                  <span className="font-medium">Average Score:</span>{" "}
+                  {stats.averageScore != null ? stats.averageScore.toFixed(2) : "0.00"}%
                 </p>
                 <p>
                   <span className="font-medium">Best Category:</span> {stats.bestCategory || "N/A"}
@@ -124,8 +143,8 @@ function PlayerHistory() {
                             (quiz.score / quiz.totalQuestions) * 100 >= 70
                               ? "bg-green-200 text-green-700"
                               : (quiz.score / quiz.totalQuestions) * 100 >= 40
-                                ? "bg-yellow-200 text-yellow-700"
-                                : "bg-red-200 text-red-700"
+                              ? "bg-yellow-200 text-yellow-700"
+                              : "bg-red-200 text-red-700"
                           }`}
                         >
                           {((quiz.score / quiz.totalQuestions) * 100).toFixed(0)}%
@@ -140,7 +159,7 @@ function PlayerHistory() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default PlayerHistory
+export default PlayerHistory;

@@ -2,13 +2,11 @@
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
-import { useAuth } from "../../contexts/AuthContext"
 import Navbar from "../../components/Navbar"
 import { jwtDecode } from "jwt-decode"
 
 
 function AdminDashboard() {
-  const { user } = useAuth()
   const navigate = useNavigate()
   const [stats, setStats] = useState({
     totalQuestions: 0,
@@ -22,31 +20,37 @@ function AdminDashboard() {
 
   
 useEffect(() => {
-  const fetchDashboardData = async () => {
-    try {
-      const token = localStorage.getItem("token")
+    const fetchDashboardData = async () => {
+      try {
+        const token = localStorage.getItem("token");
 
-      if (token) {
-        const decodedToken = jwtDecode(token)
-        console.log("Decoded Token:", decodedToken)
+        if (!token) {
+          setError("No token found. Please login.");
+          setLoading(false);
+          return;
+        }
+
+        const decodedToken = jwtDecode(token);
+        console.log("Decoded Token:", decodedToken);
+
+        const response = await axios.get("http://localhost:5000/api/admin/dashboard", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        setStats(response.data.stats);
+        setRecentPlayers(response.data.recentPlayers);
+      } catch (error) {
+        console.error("Error fetching dashboard:", error.response?.data || error.message);
+        setError("Failed to load dashboard data. Unauthorized or invalid token.");
+      } finally {
+        setLoading(false);
       }
+    };
 
-      const response = await axios.get("http://localhost:5000/api/admin/dashboard", {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-
-      setStats(response.data.stats)
-      setRecentPlayers(response.data.recentPlayers)
-    } catch (error) {
-      setError("Failed to load dashboard data")
-      console.error(error)
-    } finally {
-      setLoading(false)
-    }
-  }
-
-  fetchDashboardData()
-}, [])
+    fetchDashboardData();
+  }, []);
 
   const handleNavigate = (path) => {
     navigate(path)

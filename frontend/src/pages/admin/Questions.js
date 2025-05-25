@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
-import { useAuth } from "../../contexts/AuthContext"
 import Navbar from "../../components/Navbar"
 import {jwtDecode} from 'jwt-decode'
 
 function AdminQuestions() {
-  const { user } = useAuth()
   const [questions, setQuestions] = useState([])
   const [categories, setCategories] = useState([])
   const [loading, setLoading] = useState(true)
@@ -132,11 +130,12 @@ const handleSaveQuestion = async () => {
     const decode = jwtDecode(token);
     console.log(decode);
 
-    // Validate inputs
+    // Validate question text
     if (!currentQuestion.text || !currentQuestion.text.trim()) {
       return setError("Question text is required");
     }
 
+    // Validate options
     if (
       !Array.isArray(currentQuestion.options) ||
       currentQuestion.options.length < 2 ||
@@ -145,10 +144,12 @@ const handleSaveQuestion = async () => {
       return setError("All options must be filled and at least 2 options required");
     }
 
-    if (!currentQuestion.categoryId || currentQuestion.categoryId.length !== 24) {
+    // Validate categoryId (must be 24 hex chars)
+    if (!currentQuestion.categoryId || !/^[a-fA-F0-9]{24}$/.test(currentQuestion.categoryId)) {
       return setError("Valid category is required");
     }
 
+    // Validate correctOption
     if (
       currentQuestion.correctOption === undefined ||
       currentQuestion.correctOption === null ||
@@ -159,6 +160,14 @@ const handleSaveQuestion = async () => {
       return setError("Please select a valid correct option");
     }
 
+    // If editing, validate that the question actually exists in the list
+    if (isEditMode) {
+      const exists = questions.some(q => q._id === currentQuestion._id);
+      if (!exists) {
+        return setError("Cannot edit: Question not found.");
+      }
+    }
+
     // Prepare payload using the updated field names
     const payload = {
       text: currentQuestion.text.trim(),
@@ -167,19 +176,26 @@ const handleSaveQuestion = async () => {
       correctOption: currentQuestion.correctOption,
     };
 
-    const response = await axios.post(
-      "http://localhost:5000/api/questions/",
-      payload,
-      {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-    );
-
+    let response;
     if (isEditMode) {
+      response = await axios.put(
+        `http://localhost:5000/api/questions/${currentQuestion._id}`,
+        payload,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       setQuestions(
         questions.map((q) => (q._id === currentQuestion._id ? response.data : q))
       );
     } else {
+      response = await axios.post(
+        "http://localhost:5000/api/questions/",
+        payload,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       setQuestions([...questions, response.data]);
     }
 
@@ -191,8 +207,6 @@ const handleSaveQuestion = async () => {
     console.error("Response:", error?.response?.data);
   }
 };
-
-
 
 const resolveCategoryName = (category) => {
   if (!category) return "Unknown Category";
@@ -209,10 +223,14 @@ const resolveCategoryName = (category) => {
   const handleAddCategory = async () => {
     try {
       if (!newCategory.trim()) {
-        return setError("Category name is required")
+        return setError("Category name is required");
+      }
+      // Check for duplicate category name (case-insensitive)
+      if (categories.some(cat => cat.name.toLowerCase() === newCategory.trim().toLowerCase())) {
+        return setError("Category already exists");
       }
 
-      const token = localStorage.getItem("token")
+      const token = localStorage.getItem("token");
       const response = await axios.post(
         "http://localhost:5000/api/categories",
         {

@@ -4,10 +4,34 @@ const Question = require("../models/Question");
 const Category = require("../models/Category");
 const auth = require("../middleware/auth");
 const adminAuth = require("../middleware/adminAuth");
+const { body, validationResult } = require("express-validator");
 
 const router = express.Router();
 
-// Get all questions (admin only)
+// ✅ PUBLIC route - Get quiz questions
+router.get("/quiz", async (req, res) => {
+  try {
+    const { categoryId, count = 5 } = req.query;
+
+    if (!categoryId) {
+      return res.status(400).json({ message: "Category ID is required" });
+    }
+
+    const questions = await Question.aggregate([
+      { $match: { category: new mongoose.Types.ObjectId(categoryId) } },
+      { $sample: { size: Number(count) } },
+    ]);
+
+    await Question.populate(questions, { path: "category", select: "name" });
+
+    res.json(questions);
+  } catch (error) {
+    console.error("Error fetching quiz questions:", error);
+    res.status(500).json({ message: "Server error" });
+  }
+});
+
+// ✅ PROTECTED routes (admin only)
 router.get("/", [auth, adminAuth], async (req, res) => {
   try {
     const questions = await Question.find()
@@ -20,27 +44,59 @@ router.get("/", [auth, adminAuth], async (req, res) => {
   }
 });
 
-// Get questions for a quiz
-router.get("/quiz", auth, async (req, res) => {
+router.get("/:id", [auth, adminAuth], async (req, res) => {
   try {
-    const { categoryId, count = 5 } = req.query;
-
-    const questions = await Question.aggregate([
-      { $match: { category: new mongoose.Types.ObjectId(categoryId) } },
-      { $sample: { size: Number(count) } },
-    ]);
-
-    await Question.populate(questions, { path: "category", select: "name" });
-
-    res.json(questions);
+    const question = await Question.findById(req.params.id).populate("category", "name");
+    if (!question) {
+      return res.status(404).json({ message: "Question not found" });
+    }
+    res.json(question);
   } catch (error) {
     console.error(error);
+    if (error.kind === "ObjectId") {
+      return res.status(400).json({ message: "Invalid question ID" });
+    }
     res.status(500).json({ message: "Server error" });
   }
 });
+const validateQuestion = [
+  body("text")
+    .trim()
+    .notEmpty()
+    .withMessage("Question text is required"),
 
-// Create a question
-router.post("/", [auth, adminAuth], async (req, res) => {
+  body("options")
+    .isArray({ min: 2 })
+    .withMessage("Options must be an array with at least 2 items")
+    .custom((opts) => opts.every(opt => typeof opt === "string" && opt.trim().length > 0))
+    .withMessage("Each option must be a non-empty string"),
+
+  body("correctOption")
+    .isInt({ min: 0 }) // must be an integer >= 0
+    .withMessage("Correct option must be a valid index")
+    .custom((value, { req }) => {
+      const options = req.body.options;
+      if (!Array.isArray(options)) return false;
+      return value >= 0 && value < options.length; // check index bounds
+    })
+    .withMessage("Correct option index must be within the range of options"),
+
+  body("categoryId")
+    .notEmpty()
+    .withMessage("Category ID is required")
+    .custom((value) => mongoose.Types.ObjectId.isValid(value))
+    .withMessage("Invalid category ID"),
+];
+
+
+router.post("/", [auth, adminAuth, ...validateQuestion], async (req, res) => {
+  // 1️⃣  gather validation errors (if any)
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    // ⚠️  send them back in the same shape express-validator uses
+    return res.status(400).json({ errors: errors.array() });
+  }
+
   try {
     const { text, options, categoryId, correctOption } = req.body;
 
@@ -61,7 +117,6 @@ router.post("/", [auth, adminAuth], async (req, res) => {
   }
 });
 
-// Update a question
 router.put("/:id", [auth, adminAuth], async (req, res) => {
   try {
     const { text, options, categoryId, correctOption } = req.body;
@@ -84,8 +139,6 @@ router.put("/:id", [auth, adminAuth], async (req, res) => {
   }
 });
 
-
-// Delete a question
 router.delete("/:id", [auth, adminAuth], async (req, res) => {
   try {
     const question = await Question.findById(req.params.id);

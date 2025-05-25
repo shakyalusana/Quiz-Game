@@ -9,12 +9,13 @@ module.exports = function (req, res, next) {
       return res.status(401).json({ message: "Access denied. No token provided." });
     }
 
-    const token = authHeader.replace("Bearer ", "");
+    const token = authHeader.split(" ")[1];
     const decoded = jwt.verify(token, process.env.JWT_SECRET || "your_jwt_secret");
 
-    req.user = decoded; // 👈 makes `req.user.id` available
+    req.user = decoded;
     next();
   } catch (err) {
+    console.error("Auth middleware error:", err.message);
     res.status(401).json({ message: "Invalid or expired token." });
   }
 };
