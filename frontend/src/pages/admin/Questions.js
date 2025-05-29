@@ -260,6 +260,7 @@ const resolveCategoryName = (category) => {
       options: updatedOptions,
     })
   }
+  
 
   // Filter questions based on category and search term
   const filteredQuestions = questions.filter((question) => {

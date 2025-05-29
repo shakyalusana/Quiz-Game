@@ -8,7 +8,7 @@ const { body, validationResult } = require("express-validator");
 
 const router = express.Router();
 
-// ✅ PUBLIC route - Get quiz questions
+// PUBLIC route - Get quiz questions
 router.get("/quiz", async (req, res) => {
   try {
     const { categoryId, count = 5 } = req.query;

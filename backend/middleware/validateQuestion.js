@@ -1,11 +1,19 @@
 const { body, validationResult } = require("express-validator");
 const mongoose = require("mongoose");
+const validateQuestion = require('./path/to/validateQuestion');
+
+router.post("/questions", validateQuestion, yourCreateHandler);
 
 const validateQuestion = [
   body("text")
     .trim()
     .notEmpty()
-    .withMessage("Question text is required"),
+    .withMessage("Question text is required")
+    .custom((text) => {
+      // Must start with a capital letter and end with a question mark
+      return /^[A-Z][\s\S]*\?\s*$/.test(text);
+    })
+    .withMessage("Question must start with a capital letter and end with a question mark"),
 
   body("options")
     .isArray({ min: 2 })
