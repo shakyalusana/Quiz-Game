@@ -1,5 +1,3 @@
-
-
 //! Fisher-Yates shuffle algorithm
 function shuffleArray(array) {
   const shuffled = [...array]
@@ -17,34 +15,6 @@ function getRandomQuestions(questions, count) {
 
   //! Return the requested number of questions
   return shuffled.slice(0, count)
-}
-
-//! Get random questions with difficulty distribution
-function getRandomQuestionsWithDifficulty(
-  questions,
-  count,
-  difficultyDistribution = { easy: 0.3, medium: 0.5, hard: 0.2 },
-) {
-
-  //! Group questions by difficulty
-  const questionsByDifficulty = {
-    easy: questions.filter((q) => q.difficulty === "easy"),
-    medium: questions.filter((q) => q.difficulty === "medium"),
-    hard: questions.filter((q) => q.difficulty === "hard"),
-  }
-
-  //! Calculate number of questions for each difficulty
-  const easyCount = Math.round(count * difficultyDistribution.easy)
-  const mediumCount = Math.round(count * difficultyDistribution.medium)
-  const hardCount = count - easyCount - mediumCount
-
-  //! Get random questions for each difficulty
-  const easyQuestions = getRandomQuestions(questionsByDifficulty.easy, easyCount)
-  const mediumQuestions = getRandomQuestions(questionsByDifficulty.medium, mediumCount)
-  const hardQuestions = getRandomQuestions(questionsByDifficulty.hard, hardCount)
-
-  //! Combine and shuffle the questions
-  return shuffleArray([...easyQuestions, ...mediumQuestions, ...hardQuestions])
 }
 
 module.exports = {

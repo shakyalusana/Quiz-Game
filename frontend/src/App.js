@@ -1,30 +1,31 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom"
-import { AuthProvider, useAuth } from "./contexts/AuthContext"
-import Login from "./pages/Login"
-import Signup from "./pages/Signup"
-import PlayerDashboard from "./pages/player/Dashboard"
-import PlayerQuiz from "./pages/player/Quiz"
-import PlayerHistory from "./pages/player/History"
-import AdminDashboard from "./pages/admin/Dashboard"
-import AdminQuestions from "./pages/admin/Questions"
-import AdminLeaderboard from "./pages/admin/Leaderboard"
-import AdminPlayers from "./pages/admin/Players"
-import "./index.css"
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { AuthProvider, useAuth } from "./contexts/AuthContext";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import PlayerDashboard from "./pages/player/Dashboard";
+import PlayerQuiz from "./pages/player/Quiz";
+import PlayerQuizReview from "./pages/player/PlayerQuizReview"; // ✅ Imported review page
+import PlayerHistory from "./pages/player/History";
+import AdminDashboard from "./pages/admin/Dashboard";
+import AdminQuestions from "./pages/admin/Questions";
+import AdminLeaderboard from "./pages/admin/Leaderboard";
+import AdminPlayers from "./pages/admin/Players";
+import "./index.css";
 
 // Protected route component
 const ProtectedRoute = ({ children, allowedRoles }) => {
-  const { user } = useAuth()
+  const { user } = useAuth();
 
   if (!user) {
-    return <Navigate to="/login" />
+    return <Navigate to="/login" />;
   }
 
   if (allowedRoles && !allowedRoles.includes(user.role)) {
-    return <Navigate to={user.role === "player" ? "/player/dashboard" : "/admin/dashboard"} />
+    return <Navigate to={user.role === "player" ? "/player/dashboard" : "/admin/dashboard"} />;
   }
 
-  return children
-}
+  return children;
+};
 
 function App() {
   return (
@@ -49,6 +50,14 @@ function App() {
             element={
               <ProtectedRoute allowedRoles={["player"]}>
                 <PlayerQuiz />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/player/quiz-review"
+            element={
+              <ProtectedRoute allowedRoles={["player"]}>
+                <PlayerQuizReview />
               </ProtectedRoute>
             }
           />
@@ -100,7 +109,7 @@ function App() {
         </Routes>
       </Router>
     </AuthProvider>
-  )
+  );
 }
 
-export default App
+export default App;

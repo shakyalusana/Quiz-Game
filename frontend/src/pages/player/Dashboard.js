@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
@@ -45,22 +44,11 @@ function PlayerDashboard() {
         categoryId: selectedCategory,
         questionCount,
       },
-    })  
+    })
   }
 
   const handleViewHistory = () => {
     navigate("/player/history")
-  }
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-gray-100">
-        <Navbar />
-        <div className="container mx-auto px-4 py-8">
-          <div className="text-center">Loading...</div>
-        </div>
-      </div>
-    )
   }
 
   return (
@@ -70,7 +58,11 @@ function PlayerDashboard() {
         <div className="bg-white rounded-lg shadow-md p-6 max-w-2xl mx-auto">
           <h1 className="text-3xl font-bold text-center mb-6 text-purple-600">Welcome, {user?.name}!</h1>
 
-          {error && <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">{error}</div>}
+          {error && (
+            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+              {error}
+            </div>
+          )}
 
           <div className="mb-6">
             <h2 className="text-xl font-semibold mb-4">Start a New Quiz</h2>
@@ -84,6 +76,7 @@ function PlayerDashboard() {
                 className="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
+                disabled={loading}
               >
                 {categories.map((category) => (
                   <option key={category._id} value={category._id}>
@@ -105,6 +98,7 @@ function PlayerDashboard() {
                 className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
                 value={questionCount}
                 onChange={(e) => setQuestionCount(Number.parseInt(e.target.value))}
+                disabled={loading}
               />
               <div className="flex justify-between text-xs text-gray-600">
                 <span>1</span>
@@ -118,7 +112,7 @@ function PlayerDashboard() {
             <button
               onClick={handleStartQuiz}
               className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
-              disabled={!selectedCategory}
+              disabled={!selectedCategory || loading}
             >
               Start Quiz
             </button>
