@@ -16,21 +16,33 @@ function PlayerQuiz() {
   const [score, setScore] = useState(0);
 
   useEffect(() => {
+    let fetched = false;
+
     if (!categoryId || !questionCount) {
       navigate("/player/dashboard", { replace: true });
       return;
     }
 
     const fetchQuestions = async () => {
+      if (fetched) return;
+      fetched = true;
+
       try {
-        setLoading(true);
         const response = await axios.get("http://localhost:5000/api/questions/quiz", {
           params: { categoryId, count: questionCount },
         });
-        setQuestions(response.data);
-      } catch (error) {
+
+        // ✅ Remove duplicates before setting
+        const uniqueMap = new Map();
+        response.data.forEach((q) => {
+          if (!uniqueMap.has(q._id)) {
+            uniqueMap.set(q._id, q);
+          }
+        });
+        setQuestions(Array.from(uniqueMap.values()));
+      } catch (err) {
         setError("Failed to load questions");
-        console.error(error);
+        console.error(err);
       } finally {
         setLoading(false);
       }
@@ -38,24 +50,20 @@ function PlayerQuiz() {
 
     fetchQuestions();
 
-    // Push a new history state to prevent back
     window.history.pushState(null, "", window.location.href);
-
-    // Listener to prevent back navigation
     const onPopState = () => {
       if (!quizCompleted) {
         window.history.pushState(null, "", window.location.href);
       }
     };
-    window.addEventListener("popstate", onPopState);
-
-    // Warn on page refresh or close
     const onBeforeUnload = (e) => {
       if (!quizCompleted) {
         e.preventDefault();
         e.returnValue = "";
       }
     };
+
+    window.addEventListener("popstate", onPopState);
     window.addEventListener("beforeunload", onBeforeUnload);
 
     return () => {
@@ -66,14 +74,9 @@ function PlayerQuiz() {
 
   const handleAnswerSelect = (questionId, optionIndex) => {
     if (quizCompleted) return;
-
-    setCurrentAnswers((prev) => ({
-      ...prev,
-      [questionId]: optionIndex,
-    }));
-
+    setCurrentAnswers((prev) => ({ ...prev, [questionId]: optionIndex }));
     const question = questions.find((q) => q._id === questionId);
-    if (question.correctOption === optionIndex) {
+    if (question && question.correctOption === optionIndex) {
       setScore((prev) => prev + 1);
     }
   };
@@ -81,32 +84,22 @@ function PlayerQuiz() {
   const handleSubmitQuiz = async () => {
     try {
       const token = localStorage.getItem("token");
-
-      const results = questions.map((question) => ({
-        questionId: question._id,
-        selectedOption:
-          currentAnswers[question._id] !== undefined
-            ? currentAnswers[question._id]
-            : null,
-        isCorrect: currentAnswers[question._id] === question.correctOption,
+      const results = questions.map((q) => ({
+        questionId: q._id,
+        selectedOption: currentAnswers[q._id] ?? null,
+        isCorrect: currentAnswers[q._id] === q.correctOption,
       }));
 
       await axios.post(
         "http://localhost:5000/api/quiz/submit",
-        {
-          categoryId,
-          results,
-          score,
-        },
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
+        { categoryId, results, score },
+        { headers: { Authorization: `Bearer ${token}` } }
       );
 
       setQuizCompleted(true);
-    } catch (error) {
+    } catch (err) {
       setError("Failed to submit quiz");
-      console.error(error);
+      console.error(err);
     }
   };
 
@@ -114,8 +107,8 @@ function PlayerQuiz() {
     return (
       <div className="min-h-screen bg-gray-100">
         <Navbar />
-        <div className="container mx-auto px-4 py-8">
-          <div className="text-center">Loading quiz questions...</div>
+        <div className="container mx-auto px-4 py-8 text-center">
+          Loading quiz questions...
         </div>
       </div>
     );
@@ -160,19 +153,18 @@ function PlayerQuiz() {
           )}
 
           <div className="space-y-8">
-            {questions.map((question, questionIndex) => (
-              <div key={question._id} className="border rounded-lg p-4">
+            {questions.map((q, i) => (
+              <div key={q._id} className="border rounded-lg p-4">
                 <h3 className="text-lg font-semibold mb-3">
-                  {questionIndex + 1}. {question.text}
+                  {i + 1}. {q.text}
                 </h3>
-
                 <div className="space-y-2">
-                  {question.options.map((option, optionIndex) => {
-                    const isSelected = currentAnswers[question._id] === optionIndex;
+                  {q.options.map((option, j) => {
+                    const isSelected = currentAnswers[q._id] === j;
                     return (
                       <div
-                        key={optionIndex}
-                        onClick={() => handleAnswerSelect(question._id, optionIndex)}
+                        key={j}
+                        onClick={() => handleAnswerSelect(q._id, j)}
                         className={`p-3 rounded-md cursor-pointer border transition-colors ${
                           isSelected
                             ? "bg-blue-100 border-blue-400"
@@ -181,7 +173,7 @@ function PlayerQuiz() {
                       >
                         <div className="flex items-start">
                           <div className="flex-shrink-0 w-6">
-                            {String.fromCharCode(65 + optionIndex)}.
+                            {String.fromCharCode(65 + j)}.
                           </div>
                           <div className="ml-2">{option}</div>
                         </div>

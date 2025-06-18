@@ -4,7 +4,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import PlayerDashboard from "./pages/player/Dashboard";
 import PlayerQuiz from "./pages/player/Quiz";
-import PlayerQuizReview from "./pages/player/PlayerQuizReview"; // ✅ Imported review page
+import PlayerQuizReview from "./pages/player/PlayerQuizReview"; 
 import PlayerHistory from "./pages/player/History";
 import AdminDashboard from "./pages/admin/Dashboard";
 import AdminQuestions from "./pages/admin/Questions";
