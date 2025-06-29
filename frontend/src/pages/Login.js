@@ -1,27 +1,26 @@
-
-import { useState } from "react"
-import { Link, useNavigate } from "react-router-dom"
-import { useAuth } from "../contexts/AuthContext"
+import { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { useAuth } from '../contexts/AuthContext'
 
 function Login() {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [error, setError] = useState("")
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const { login } = useAuth()
   const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    setError("")
+    setError('')
     setLoading(true)
 
     try {
       const user = await login(email, password)
-      if (user.role === "player") {
-        navigate("/player/dashboard")
+      if (user.role === 'player') {
+        navigate('/welcome-quiz')
       } else {
-        navigate("/admin/dashboard")
+        navigate('/admin/dashboard') // Admins go directly
       }
     } catch (error) {
       setError(error.message)
@@ -33,13 +32,22 @@ function Login() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
-        <h1 className="text-3xl font-bold text-center mb-6 text-purple-600">Quiz Game Login</h1>
+        <h1 className="text-3xl font-bold text-center mb-6 text-purple-600">
+          Quiz Game Login
+        </h1>
 
-        {error && <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">{error}</div>}
+        {error && (
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+            {error}
+          </div>
+        )}
 
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="email"
+            >
               Email
             </label>
             <input
@@ -53,7 +61,10 @@ function Login() {
           </div>
 
           <div className="mb-6">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="password"
+            >
               Password
             </label>
             <input
@@ -72,15 +83,18 @@ function Login() {
               className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
               disabled={loading}
             >
-              {loading ? "Logging in..." : "Login"}
+              {loading ? 'Logging in...' : 'Login'}
             </button>
           </div>
         </form>
 
         <div className="text-center mt-4">
           <p className="text-gray-600">
-            Don't have an account?{" "}
-            <Link to="/signup" className="text-purple-600 hover:text-purple-800">
+            Don't have an account?{' '}
+            <Link
+              to="/signup"
+              className="text-purple-600 hover:text-purple-800"
+            >
               Sign up
             </Link>
           </p>

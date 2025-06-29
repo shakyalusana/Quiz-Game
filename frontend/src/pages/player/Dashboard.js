@@ -1,52 +1,52 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import { useAuth } from "../../contexts/AuthContext";
-import Navbar from "../../components/Navbar";
+import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import { useAuth } from '../../contexts/AuthContext'
+import Navbar from '../../components/Navbar'
 
 function PlayerDashboard() {
-  const { user } = useAuth();
-  const navigate = useNavigate();
-  const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("");
-  const [questionCount, setQuestionCount] = useState(5);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const { user } = useAuth()
+  const navigate = useNavigate()
+  const [categories, setCategories] = useState([])
+  const [selectedCategory, setSelectedCategory] = useState('')
+  const [questionCount, setQuestionCount] = useState(5)
+  const [error, setError] = useState('')
 
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const token = localStorage.getItem("token");
-        const response = await axios.get("http://localhost:5000/api/categories", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        setCategories(response.data);
+        const token = localStorage.getItem('token')
+        const response = await axios.get(
+          'http://localhost:5000/api/categories',
+          {
+            headers: { Authorization: `Bearer ${token}`},
+          }
+        )
+        setCategories(response.data)
         if (response.data.length > 0) {
-          setSelectedCategory(response.data[0]._id);
+          setSelectedCategory(response.data[0]._id)
         }
       } catch (error) {
-        setError("Failed to load categories");
-        console.error(error);
-      } finally {
-        setLoading(false);
+        setError('Failed to load categories')
+        console.error(error)
       }
-    };
+    }
 
-    fetchCategories();
-  }, []);
+    fetchCategories()
+  }, [])
 
   const handleStartQuiz = () => {
-    navigate("/player/quiz", {
+    navigate('/player/quiz', {
       state: {
         categoryId: selectedCategory,
         questionCount,
       },
-    });
-  };
+    })
+  }
 
   const handleViewHistory = () => {
-    navigate("/player/history");
-  };
+    navigate('/player/history')
+  }
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -66,7 +66,10 @@ function PlayerDashboard() {
           <div className="mb-6">
             <h2 className="text-xl font-semibold mb-4">Start a New Quiz</h2>
             <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="category">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="category"
+              >
                 Select Category
               </label>
               <select
@@ -74,7 +77,6 @@ function PlayerDashboard() {
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
                 className="shadow border rounded w-full py-2 px-3 text-gray-700"
-                disabled={loading}
               >
                 {categories.map((category) => (
                   <option key={category._id} value={category._id}>
@@ -85,7 +87,10 @@ function PlayerDashboard() {
             </div>
 
             <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="questionCount">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="questionCount"
+              >
                 Number of Questions: {questionCount}
               </label>
               <input
@@ -102,7 +107,7 @@ function PlayerDashboard() {
             <button
               onClick={handleStartQuiz}
               className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded w-full"
-              disabled={!selectedCategory || loading}
+              disabled={!selectedCategory}
             >
               Start Quiz
             </button>
@@ -119,7 +124,7 @@ function PlayerDashboard() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default PlayerDashboard;
+export default PlayerDashboard

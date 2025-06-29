@@ -1,0 +1,2119 @@
+[{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffd82"
+  },
+  "text": "Which country won the FIFA World Cup in 2018?",
+  "options": [
+    "Brazil",
+    "Germany",
+    "France",
+    "Argentina"
+  ],
+  "correctOption": 2,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffd83"
+  },
+  "text": "How many players are there on a basketball team on the court?",
+  "options": [
+    "5",
+    "6",
+    "7",
+    "8"
+  ],
+  "correctOption": 0,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffd85"
+  },
+  "text": "What is the maximum score you can get with a single throw in darts?",
+  "options": [
+    "50",
+    "60",
+    "100",
+    "40"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffd86"
+  },
+  "text": "Which country hosts the Wimbledon tennis tournament?",
+  "options": [
+    "USA",
+    "France",
+    "England",
+    "Australia"
+  ],
+  "correctOption": 2,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffd87"
+  },
+  "text": "How many players are there in a standard soccer team on the field?",
+  "options": [
+    "9",
+    "10",
+    "11",
+    "12"
+  ],
+  "correctOption": 2,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffd88"
+  },
+  "text": "Which sport is known as the 'king of sports'?",
+  "options": [
+    "Basketball",
+    "Football (Soccer)",
+    "Tennis",
+    "Cricket"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffd89"
+  },
+  "text": "Which country has won the most Olympic gold medals overall?",
+  "options": [
+    "USA",
+    "China",
+    "Russia",
+    "Germany"
+  ],
+  "correctOption": 0,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffd8a"
+  },
+  "text": "In which sport would you use a shuttlecock?",
+  "options": [
+    "Badminton",
+    "Table Tennis",
+    "Squash",
+    "Tennis"
+  ],
+  "correctOption": 0,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffd8b"
+  },
+  "text": "Who holds the record for the most goals in a single FIFA World Cup tournament?",
+  "options": [
+    "Pelé",
+    "Miroslav Klose",
+    "Ronaldo",
+    "Just Fontaine"
+  ],
+  "correctOption": 3,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffd8c"
+  },
+  "text": "Which sport features the terms 'birdie' and 'eagle'?",
+  "options": [
+    "Golf",
+    "Tennis",
+    "Football",
+    "Cricket"
+  ],
+  "correctOption": 0,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffd8d"
+  },
+  "text": "How long is a standard Olympic swimming pool?",
+  "options": [
+    "25 meters",
+    "50 meters",
+    "100 meters",
+    "200 meters"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffd8e"
+  },
+  "text": "Which sport is associated with the Stanley Cup?",
+  "options": [
+    "Basketball",
+    "Ice Hockey",
+    "Baseball",
+    "Football"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffd8f"
+  },
+  "text": "Which country is famous for sumo wrestling?",
+  "options": [
+    "China",
+    "South Korea",
+    "Japan",
+    "Thailand"
+  ],
+  "correctOption": 2,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffd90"
+  },
+  "text": "In which sport can you perform a 'Hat-trick'?",
+  "options": [
+    "Cricket",
+    "Football (Soccer)",
+    "Hockey",
+    "All of the above"
+  ],
+  "correctOption": 3,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffd91"
+  },
+  "text": "Which player is known as 'The King of Tennis'?",
+  "options": [
+    "Roger Federer",
+    "Rafael Nadal",
+    "Novak Djokovic",
+    "Pete Sampras"
+  ],
+  "correctOption": 0,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffd92"
+  },
+  "text": "How many points is a touchdown worth in American football?",
+  "options": [
+    "3",
+    "6",
+    "7",
+    "1"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffd93"
+  },
+  "text": "Which sport uses the terms 'bogey' and 'par'?",
+  "options": [
+    "Baseball",
+    "Golf",
+    "Tennis",
+    "Cricket"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffd94"
+  },
+  "text": "In which sport would you find a pommel horse?",
+  "options": [
+    "Gymnastics",
+    "Equestrian",
+    "Diving",
+    "Figure Skating"
+  ],
+  "correctOption": 0,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffd95"
+  },
+  "text": "Which country won the first ever FIFA World Cup in 1930?",
+  "options": [
+    "Uruguay",
+    "Brazil",
+    "Argentina",
+    "Italy"
+  ],
+  "correctOption": 0,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffd96"
+  },
+  "text": "How many minutes is a standard professional soccer match?",
+  "options": [
+    "60",
+    "75",
+    "90",
+    "120"
+  ],
+  "correctOption": 2,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffd97"
+  },
+  "text": "Which sport involves the terms 'spike' and 'block'?",
+  "options": [
+    "Basketball",
+    "Volleyball",
+    "Tennis",
+    "Handball"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffd98"
+  },
+  "text": "Which city hosted the Summer Olympics in 2016?",
+  "options": [
+    "London",
+    "Tokyo",
+    "Rio de Janeiro",
+    "Beijing"
+  ],
+  "correctOption": 2,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffd99"
+  },
+  "text": "What is the name of the trophy awarded to the NHL champions?",
+  "options": [
+    "The Stanley Cup",
+    "The Vince Lombardi Trophy",
+    "The World Cup",
+    "The Larry O'Brien Trophy"
+  ],
+  "correctOption": 0,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffd9a"
+  },
+  "text": "In tennis, what is the term for a score of zero?",
+  "options": [
+    "Zero",
+    "Love",
+    "Nil",
+    "Duck"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffd9b"
+  },
+  "text": "Which sport is played on a court with a net and rackets, but the ball is hollow and made of plastic?",
+  "options": [
+    "Tennis",
+    "Badminton",
+    "Table Tennis",
+    "Squash"
+  ],
+  "correctOption": 2,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffd9c"
+  },
+  "text": "What is the distance of a marathon race?",
+  "options": [
+    "21.1 km",
+    "42.195 km",
+    "50 km",
+    "10 km"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffd9d"
+  },
+  "text": "Which country has won the most Rugby World Cups?",
+  "options": [
+    "Australia",
+    "New Zealand",
+    "South Africa",
+    "England"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffd9e"
+  },
+  "text": "In which sport is the term 'knockout' used?",
+  "options": [
+    "Boxing",
+    "Football",
+    "Basketball",
+    "Cricket"
+  ],
+  "correctOption": 0,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffd9f"
+  },
+  "text": "Which athlete is famous for winning 8 gold medals in a single Olympic Games?",
+  "options": [
+    "Usain Bolt",
+    "Michael Phelps",
+    "Simone Biles",
+    "Carl Lewis"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffda0"
+  },
+  "text": "Which sport is also known as 'soccer' in the United States?",
+  "options": [
+    "Rugby",
+    "American Football",
+    "Football",
+    "Basketball"
+  ],
+  "correctOption": 2,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffda1"
+  },
+  "text": "What piece of equipment is essential in ice hockey?",
+  "options": [
+    "Bat",
+    "Stick",
+    "Racket",
+    "Glove"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffda2"
+  },
+  "text": "Which country is known for the sport of cricket and has the team called 'The Proteas'?",
+  "options": [
+    "Australia",
+    "South Africa",
+    "India",
+    "England"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffda3"
+  },
+  "text": "Which of these is NOT a recognized Olympic sport?",
+  "options": [
+    "Surfing",
+    "Chess",
+    "Basketball",
+    "Gymnastics"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffda4"
+  },
+  "text": "Which country won the NBA championship in 2020?",
+  "options": [
+    "Los Angeles Lakers",
+    "Miami Heat",
+    "Toronto Raptors",
+    "Golden State Warriors"
+  ],
+  "correctOption": 0,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffda5"
+  },
+  "text": "Which sport uses a puck?",
+  "options": [
+    "Field Hockey",
+    "Ice Hockey",
+    "Lacrosse",
+    "Curling"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffda6"
+  },
+  "text": "What is the term used when a bowler gets three wickets in three consecutive balls in cricket?",
+  "options": [
+    "Hat-trick",
+    "Century",
+    "Double",
+    "Triple Play"
+  ],
+  "correctOption": 0,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffda7"
+  },
+  "text": "Who is known as the fastest man in the world?",
+  "options": [
+    "Michael Johnson",
+    "Usain Bolt",
+    "Carl Lewis",
+    "Justin Gatlin"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffda8"
+  },
+  "text": "What sport does Serena Williams play?",
+  "options": [
+    "Badminton",
+    "Tennis",
+    "Table Tennis",
+    "Squash"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffda9"
+  },
+  "text": "Which of these is a Winter Olympic sport?",
+  "options": [
+    "Bobsleigh",
+    "Water Polo",
+    "Baseball",
+    "Rugby"
+  ],
+  "correctOption": 0,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffdaa"
+  },
+  "text": "How many holes are there in a standard round of golf?",
+  "options": [
+    "9",
+    "12",
+    "15",
+    "18"
+  ],
+  "correctOption": 3,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffdab"
+  },
+  "text": "What is the term for a perfect score in bowling?",
+  "options": [
+    "300",
+    "200",
+    "100",
+    "400"
+  ],
+  "correctOption": 0,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffdac"
+  },
+  "text": "Which country won the Cricket World Cup in 2019?",
+  "options": [
+    "England",
+    "New Zealand",
+    "Australia",
+    "India"
+  ],
+  "correctOption": 0,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffdad"
+  },
+  "text": "In which sport would you find a 'scrum'?",
+  "options": [
+    "Rugby",
+    "Football",
+    "Basketball",
+    "Hockey"
+  ],
+  "correctOption": 0,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffdae"
+  },
+  "text": "Who is the all-time top scorer in the NBA?",
+  "options": [
+    "Michael Jordan",
+    "Kobe Bryant",
+    "LeBron James",
+    "Kareem Abdul-Jabbar"
+  ],
+  "correctOption": 3,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffdaf"
+  },
+  "text": "Which sport is played at the Super Bowl?",
+  "options": [
+    "Basketball",
+    "Baseball",
+    "American Football",
+    "Soccer"
+  ],
+  "correctOption": 2,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682c48f49505329aad9ffdb0"
+  },
+  "text": "Which sport has a playing field called a 'diamond'?",
+  "options": [
+    "Baseball",
+    "Football",
+    "Cricket",
+    "Soccer"
+  ],
+  "correctOption": 0,
+  "category": {
+    "$oid": "682c41c26fe24190bed33ecf"
+  }
+},
+{
+  "_id": {
+    "$oid": "682d869a529619a29f3ba094"
+  },
+  "text": "What does 'HTML' stand for?",
+  "options": [
+    "Hyper Text Markup Language",
+    "Home Tool Markup Language",
+    "Hyperlinks and Text Markup Language",
+    "Hyperlinking Text Marking Language"
+  ],
+  "correctOption": 0,
+  "category": {
+    "$oid": "682c41c96fe24190bed33ed3"
+  }
+},
+{
+  "_id": {
+    "$oid": "682d869a529619a29f3ba095"
+  },
+  "text": "Which language is primarily used for styling web pages?",
+  "options": [
+    "HTML",
+    "JQuery",
+    "CSS",
+    "XML"
+  ],
+  "correctOption": 2,
+  "category": {
+    "$oid": "682c41c96fe24190bed33ed3"
+  }
+},
+{
+  "_id": {
+    "$oid": "682d869a529619a29f3ba096"
+  },
+  "text": "Inside which HTML element do we put the JavaScript?",
+  "options": [
+    "<js>",
+    "<script>",
+    "<javascript>",
+    "<scripting>"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "682c41c96fe24190bed33ed3"
+  }
+},
+{
+  "_id": {
+    "$oid": "682d869a529619a29f3ba097"
+  },
+  "text": "Which symbol is used for comments in Python?",
+  "options": [
+    "//",
+    "#",
+    "/* */",
+    "<!-- -->"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "682c41c96fe24190bed33ed3"
+  }
+},
+{
+  "_id": {
+    "$oid": "682d869a529619a29f3ba098"
+  },
+  "text": "What is the output of: print(2 + 3 * 4)?",
+  "options": [
+    "20",
+    "14",
+    "24",
+    "None of the above"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "682c41c96fe24190bed33ed3"
+  }
+},
+{
+  "_id": {
+    "$oid": "682d869a529619a29f3ba099"
+  },
+  "text": "Which of these is NOT a programming language?",
+  "options": [
+    "Python",
+    "Java",
+    "HTML",
+    "C++"
+  ],
+  "correctOption": 2,
+  "category": {
+    "$oid": "682c41c96fe24190bed33ed3"
+  }
+},
+{
+  "_id": {
+    "$oid": "682d869a529619a29f3ba09a"
+  },
+  "text": "What does 'IDE' stand for in programming?",
+  "options": [
+    "Integrated Development Environment",
+    "Internal Development Editor",
+    "Integrated Design Engine",
+    "Internet Development Environment"
+  ],
+  "correctOption": 0,
+  "category": {
+    "$oid": "682c41c96fe24190bed33ed3"
+  }
+},
+{
+  "_id": {
+    "$oid": "682d869a529619a29f3ba09b"
+  },
+  "text": "Which data type is used to store text in most programming languages?",
+  "options": [
+    "Integer",
+    "Float",
+    "String",
+    "Boolean"
+  ],
+  "correctOption": 2,
+  "category": {
+    "$oid": "682c41c96fe24190bed33ed3"
+  }
+},
+{
+  "_id": {
+    "$oid": "682d869a529619a29f3ba09c"
+  },
+  "text": "In Python, what does the function 'len()' do?",
+  "options": [
+    "Returns the length of an object",
+    "Calculates numeric length",
+    "Deletes an object",
+    "None of the above"
+  ],
+  "correctOption": 0,
+  "category": {
+    "$oid": "682c41c96fe24190bed33ed3"
+  }
+},
+{
+  "_id": {
+    "$oid": "682d869a529619a29f3ba09d"
+  },
+  "text": "Which keyword is used to define a function in Python?",
+  "options": [
+    "func",
+    "define",
+    "def",
+    "function"
+  ],
+  "correctOption": 2,
+  "category": {
+    "$oid": "682c41c96fe24190bed33ed3"
+  }
+},
+{
+  "_id": {
+    "$oid": "682d869a529619a29f3ba09e"
+  },
+  "text": "What does 'API' stand for?",
+  "options": [
+    "Application Programming Interface",
+    "Application Performance Index",
+    "Advanced Programming Interface",
+    "Applied Programming Interaction"
+  ],
+  "correctOption": 0,
+  "category": {
+    "$oid": "682c41c96fe24190bed33ed3"
+  }
+},
+{
+  "_id": {
+    "$oid": "682d869a529619a29f3ba09f"
+  },
+  "text": "Which of these is a loop structure in programming?",
+  "options": [
+    "if",
+    "while",
+    "switch",
+    "case"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "682c41c96fe24190bed33ed3"
+  }
+},
+{
+  "_id": {
+    "$oid": "682d869a529619a29f3ba0a0"
+  },
+  "text": "What is the correct way to declare a variable in JavaScript?",
+  "options": [
+    "var x;",
+    "int x;",
+    "declare x;",
+    "variable x;"
+  ],
+  "correctOption": 0,
+  "category": {
+    "$oid": "682c41c96fe24190bed33ed3"
+  }
+},
+{
+  "_id": {
+    "$oid": "682d869a529619a29f3ba0a1"
+  },
+  "text": "Which operator is used for assignment in most programming languages?",
+  "options": [
+    "==",
+    "=",
+    "===",
+    ":="
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "682c41c96fe24190bed33ed3"
+  }
+},
+{
+  "_id": {
+    "$oid": "682d869a529619a29f3ba0a2"
+  },
+  "text": "What is a 'Boolean' data type used for?",
+  "options": [
+    "To store numbers",
+    "To store true or false values",
+    "To store text",
+    "To store lists"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "682c41c96fe24190bed33ed3"
+  }
+},
+{
+  "_id": {
+    "$oid": "682d869a529619a29f3ba0a3"
+  },
+  "text": "Which HTML tag is used for inserting a line break?",
+  "options": [
+    "<break>",
+    "<br>",
+    "<lb>",
+    "<line>"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "682c41c96fe24190bed33ed3"
+  }
+},
+{
+  "_id": {
+    "$oid": "682d869a529619a29f3ba0a4"
+  },
+  "text": "What does CSS stand for?",
+  "options": [
+    "Creative Style Sheets",
+    "Cascading Style Sheets",
+    "Computer Style Sheets",
+    "Colorful Style Sheets"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "682c41c96fe24190bed33ed3"
+  }
+},
+{
+  "_id": {
+    "$oid": "682d869a529619a29f3ba0a5"
+  },
+  "text": "In JavaScript, which method is used to print something to the console?",
+  "options": [
+    "print()",
+    "console.print()",
+    "console.log()",
+    "log()"
+  ],
+  "correctOption": 2,
+  "category": {
+    "$oid": "682c41c96fe24190bed33ed3"
+  }
+},
+{
+  "_id": {
+    "$oid": "682d869a529619a29f3ba0a6"
+  },
+  "text": "What is the value of the expression 10 % 3?",
+  "options": [
+    "3",
+    "1",
+    "0",
+    "None of the above"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "682c41c96fe24190bed33ed3"
+  }
+},
+{
+  "_id": {
+    "$oid": "682d869a529619a29f3ba0a7"
+  },
+  "text": "Which keyword is used to create a class in Python?",
+  "options": [
+    "class",
+    "def",
+    "function",
+    "create"
+  ],
+  "correctOption": 0,
+  "category": {
+    "$oid": "682c41c96fe24190bed33ed3"
+  }
+},
+{
+  "_id": {
+    "$oid": "682d869a529619a29f3ba0a8"
+  },
+  "text": "Which of these is a valid Python data structure?",
+  "options": [
+    "Array",
+    "List",
+    "Set",
+    "All of the above"
+  ],
+  "correctOption": 3,
+  "category": {
+    "$oid": "682c41c96fe24190bed33ed3"
+  }
+},
+{
+  "_id": {
+    "$oid": "682d869a529619a29f3ba0a9"
+  },
+  "text": "What is the main purpose of a compiler?",
+  "options": [
+    "To execute code line by line",
+    "To convert source code into machine code",
+    "To debug the code",
+    "To write code"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "682c41c96fe24190bed33ed3"
+  }
+},
+{
+  "_id": {
+    "$oid": "682d869a529619a29f3ba0aa"
+  },
+  "text": "Which of these is NOT a loop in programming?",
+  "options": [
+    "for",
+    "while",
+    "repeat",
+    "switch"
+  ],
+  "correctOption": 3,
+  "category": {
+    "$oid": "682c41c96fe24190bed33ed3"
+  }
+},
+{
+  "_id": {
+    "$oid": "682d869a529619a29f3ba0ab"
+  },
+  "text": "Which language is used for backend web development?",
+  "options": [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "Python"
+  ],
+  "correctOption": 3,
+  "category": {
+    "$oid": "682c41c96fe24190bed33ed3"
+  }
+},
+{
+  "_id": {
+    "$oid": "682d869a529619a29f3ba0ac"
+  },
+  "text": "What is the file extension of a Python file?",
+  "options": [
+    ".py",
+    ".java",
+    ".cpp",
+    ".js"
+  ],
+  "correctOption": 0,
+  "category": {
+    "$oid": "682c41c96fe24190bed33ed3"
+  }
+},
+{
+  "_id": {
+    "$oid": "682d869a529619a29f3ba0ad"
+  },
+  "text": "Which of these is a frontend JavaScript framework?",
+  "options": [
+    "Django",
+    "React",
+    "Flask",
+    "Laravel"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "682c41c96fe24190bed33ed3"
+  }
+},
+{
+  "_id": {
+    "$oid": "682d869a529619a29f3ba0ae"
+  },
+  "text": "Which method converts a string to an integer in most languages?",
+  "options": [
+    "toInt()",
+    "parseInt()",
+    "int()",
+    "All of the above"
+  ],
+  "correctOption": 3,
+  "category": {
+    "$oid": "682c41c96fe24190bed33ed3"
+  }
+},
+{
+  "_id": {
+    "$oid": "682d869a529619a29f3ba0af"
+  },
+  "text": "Which operator is used to compare two values for equality?",
+  "options": [
+    "=",
+    "==",
+    "===",
+    "!="
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "682c41c96fe24190bed33ed3"
+  }
+},
+{
+  "_id": {
+    "$oid": "682d869a529619a29f3ba0b0"
+  },
+  "text": "What is the result of 5 == '5' in JavaScript?",
+  "options": [
+    "true",
+    "false",
+    "Error",
+    "undefined"
+  ],
+  "correctOption": 0,
+  "category": {
+    "$oid": "682c41c96fe24190bed33ed3"
+  }
+},
+{
+  "_id": {
+    "$oid": "682d869a529619a29f3ba0b1"
+  },
+  "text": "Which data type is used to store true or false values?",
+  "options": [
+    "Integer",
+    "String",
+    "Boolean",
+    "Float"
+  ],
+  "correctOption": 2,
+  "category": {
+    "$oid": "682c41c96fe24190bed33ed3"
+  }
+},
+{
+  "_id": {
+    "$oid": "682d869a529619a29f3ba0b2"
+  },
+  "text": "What is the output of: print('Hello' + 'World') in Python?",
+  "options": [
+    "Hello World",
+    "HelloWorld",
+    "Hello+World",
+    "Error"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "682c41c96fe24190bed33ed3"
+  }
+},
+{
+  "_id": {
+    "$oid": "682d869a529619a29f3ba0b3"
+  },
+  "text": "Which HTML attribute is used to define inline styles?",
+  "options": [
+    "class",
+    "style",
+    "font",
+    "styles"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "682c41c96fe24190bed33ed3"
+  }
+},
+{
+  "_id": {
+    "$oid": "682d869a529619a29f3ba0b4"
+  },
+  "text": "Which Python keyword is used for conditional statements?",
+  "options": [
+    "if",
+    "when",
+    "do",
+    "switch"
+  ],
+  "correctOption": 0,
+  "category": {
+    "$oid": "682c41c96fe24190bed33ed3"
+  }
+},
+{
+  "_id": {
+    "$oid": "682d869a529619a29f3ba0b5"
+  },
+  "text": "What is the command to install a package using pip in Python?",
+  "options": [
+    "pip install package_name",
+    "install package_name",
+    "pip get package_name",
+    "get package_name"
+  ],
+  "correctOption": 0,
+  "category": {
+    "$oid": "682c41c96fe24190bed33ed3"
+  }
+},
+{
+  "_id": {
+    "$oid": "682d869a529619a29f3ba0b6"
+  },
+  "text": "What does 'SQL' stand for?",
+  "options": [
+    "Structured Query Language",
+    "Simple Query Language",
+    "Structured Question Language",
+    "Simple Question Language"
+  ],
+  "correctOption": 0,
+  "category": {
+    "$oid": "682c41c96fe24190bed33ed3"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf50007"
+  },
+  "text": "What is the capital of France?",
+  "options": [
+    "Paris",
+    "London",
+    "Rome",
+    "Berlin"
+  ],
+  "correctOption": 0,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf50008"
+  },
+  "text": "Which planet is known as the Red Planet?",
+  "options": [
+    "Earth",
+    "Mars",
+    "Jupiter",
+    "Saturn"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf50009"
+  },
+  "text": "Who wrote the play 'Romeo and Juliet'?",
+  "options": [
+    "William Shakespeare",
+    "Charles Dickens",
+    "Jane Austen",
+    "Leo Tolstoy"
+  ],
+  "correctOption": 0,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf5000a"
+  },
+  "text": "What is the largest ocean on Earth?",
+  "options": [
+    "Atlantic Ocean",
+    "Indian Ocean",
+    "Arctic Ocean",
+    "Pacific Ocean"
+  ],
+  "correctOption": 3,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf5000b"
+  },
+  "text": "In which country are the Pyramids of Giza located?",
+  "options": [
+    "Mexico",
+    "India",
+    "Egypt",
+    "Peru"
+  ],
+  "correctOption": 2,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf5000c"
+  },
+  "text": "Which element has the chemical symbol 'O'?",
+  "options": [
+    "Oxygen",
+    "Gold",
+    "Iron",
+    "Hydrogen"
+  ],
+  "correctOption": 0,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf5000d"
+  },
+  "text": "Who painted the Mona Lisa?",
+  "options": [
+    "Vincent van Gogh",
+    "Leonardo da Vinci",
+    "Pablo Picasso",
+    "Claude Monet"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf5000e"
+  },
+  "text": "Which country is known as the Land of the Rising Sun?",
+  "options": [
+    "China",
+    "South Korea",
+    "Thailand",
+    "Japan"
+  ],
+  "correctOption": 3,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf5000f"
+  },
+  "text": "What is the hardest natural substance on Earth?",
+  "options": [
+    "Gold",
+    "Iron",
+    "Diamond",
+    "Silver"
+  ],
+  "correctOption": 2,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf50010"
+  },
+  "text": "Which is the smallest continent by land area?",
+  "options": [
+    "Europe",
+    "Australia",
+    "Antarctica",
+    "South America"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf50011"
+  },
+  "text": "Which country hosted the 2016 Summer Olympics?",
+  "options": [
+    "China",
+    "Brazil",
+    "Russia",
+    "UK"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf50012"
+  },
+  "text": "Who discovered penicillin?",
+  "options": [
+    "Isaac Newton",
+    "Albert Einstein",
+    "Alexander Fleming",
+    "Marie Curie"
+  ],
+  "correctOption": 2,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf50013"
+  },
+  "text": "Which language has the most native speakers worldwide?",
+  "options": [
+    "English",
+    "Mandarin Chinese",
+    "Spanish",
+    "Hindi"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf50014"
+  },
+  "text": "What is the tallest mountain in the world?",
+  "options": [
+    "K2",
+    "Mount Everest",
+    "Kangchenjunga",
+    "Makalu"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf50015"
+  },
+  "text": "Who was the first man to walk on the moon?",
+  "options": [
+    "Buzz Aldrin",
+    "Neil Armstrong",
+    "Yuri Gagarin",
+    "Michael Collins"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf50016"
+  },
+  "text": "Which continent has the most countries?",
+  "options": [
+    "Asia",
+    "Africa",
+    "Europe",
+    "South America"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf50017"
+  },
+  "text": "In which year did World War II end?",
+  "options": [
+    "1940",
+    "1943",
+    "1945",
+    "1950"
+  ],
+  "correctOption": 2,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf50018"
+  },
+  "text": "What is the main ingredient in guacamole?",
+  "options": [
+    "Tomato",
+    "Avocado",
+    "Onion",
+    "Cucumber"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf50019"
+  },
+  "text": "Which country invented tea?",
+  "options": [
+    "India",
+    "England",
+    "China",
+    "Japan"
+  ],
+  "correctOption": 2,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf5001a"
+  },
+  "text": "Which gas do plants absorb from the atmosphere?",
+  "options": [
+    "Oxygen",
+    "Carbon Dioxide",
+    "Nitrogen",
+    "Hydrogen"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf5001b"
+  },
+  "text": "What is the capital of France? (candidate)",
+  "options": [
+    "Paris",
+    "London",
+    "Rome",
+    "Berlin"
+  ],
+  "correctOption": 0,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf5001c"
+  },
+  "text": "What is the capital of France? (language)",
+  "options": [
+    "Paris",
+    "London",
+    "Rome",
+    "Berlin"
+  ],
+  "correctOption": 0,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf5001d"
+  },
+  "text": "Which language has the most native speakers worldwide? (include)",
+  "options": [
+    "English",
+    "Mandarin Chinese",
+    "Spanish",
+    "Hindi"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf5001e"
+  },
+  "text": "Which is the smallest continent by land area? (least)",
+  "options": [
+    "Europe",
+    "Australia",
+    "Antarctica",
+    "South America"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf5001f"
+  },
+  "text": "Who was the first man to walk on the moon? (parent)",
+  "options": [
+    "Buzz Aldrin",
+    "Neil Armstrong",
+    "Yuri Gagarin",
+    "Michael Collins"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf50020"
+  },
+  "text": "What is the capital of France? (gun)",
+  "options": [
+    "Paris",
+    "London",
+    "Rome",
+    "Berlin"
+  ],
+  "correctOption": 0,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf50021"
+  },
+  "text": "Who wrote the play 'Romeo and Juliet'? (not)",
+  "options": [
+    "William Shakespeare",
+    "Charles Dickens",
+    "Jane Austen",
+    "Leo Tolstoy"
+  ],
+  "correctOption": 0,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf50022"
+  },
+  "text": "Which country is known as the Land of the Rising Sun? (project)",
+  "options": [
+    "China",
+    "South Korea",
+    "Thailand",
+    "Japan"
+  ],
+  "correctOption": 3,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf50023"
+  },
+  "text": "Which language has the most native speakers worldwide? (include) (reason)",
+  "options": [
+    "English",
+    "Mandarin Chinese",
+    "Spanish",
+    "Hindi"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf50024"
+  },
+  "text": "Which country is known as the Land of the Rising Sun? (project) (matter)",
+  "options": [
+    "China",
+    "South Korea",
+    "Thailand",
+    "Japan"
+  ],
+  "correctOption": 3,
+  "category": {
+    "$oid": "68317c2a527235e03cf50039"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf50025"
+  },
+  "text": "Which language has the most native speakers worldwide? (include) (reason) (stage)",
+  "options": [
+    "English",
+    "Mandarin Chinese",
+    "Spanish",
+    "Hindi"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf50026"
+  },
+  "text": "Who was the first man to walk on the moon? (parent) (ready)",
+  "options": [
+    "Buzz Aldrin",
+    "Neil Armstrong",
+    "Yuri Gagarin",
+    "Michael Collins"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf50027"
+  },
+  "text": "What is the largest ocean on Earth? (just)",
+  "options": [
+    "Atlantic Ocean",
+    "Indian Ocean",
+    "Arctic Ocean",
+    "Pacific Ocean"
+  ],
+  "correctOption": 3,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf50028"
+  },
+  "text": "Which country hosted the 2016 Summer Olympics? (same)",
+  "options": [
+    "China",
+    "Brazil",
+    "Russia",
+    "UK"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf50029"
+  },
+  "text": "Which country hosted the 2016 Summer Olympics? (since)",
+  "options": [
+    "China",
+    "Brazil",
+    "Russia",
+    "UK"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf5002a"
+  },
+  "text": "Which country hosted the 2016 Summer Olympics? (same) (hear)",
+  "options": [
+    "China",
+    "Brazil",
+    "Russia",
+    "UK"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf5002b"
+  },
+  "text": "Which country is known as the Land of the Rising Sun? (project) (test)",
+  "options": [
+    "China",
+    "South Korea",
+    "Thailand",
+    "Japan"
+  ],
+  "correctOption": 3,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf5002c"
+  },
+  "text": "Which country hosted the 2016 Summer Olympics? (same) (hear) (time)",
+  "options": [
+    "China",
+    "Brazil",
+    "Russia",
+    "UK"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf5002d"
+  },
+  "text": "Which country is known as the Land of the Rising Sun? (project) (yourself)",
+  "options": [
+    "China",
+    "South Korea",
+    "Thailand",
+    "Japan"
+  ],
+  "correctOption": 3,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf5002e"
+  },
+  "text": "Who was the first man to walk on the moon? (short)",
+  "options": [
+    "Buzz Aldrin",
+    "Neil Armstrong",
+    "Yuri Gagarin",
+    "Michael Collins"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf5002f"
+  },
+  "text": "Which country hosted the 2016 Summer Olympics? (same) (hear) (time) (paper)",
+  "options": [
+    "China",
+    "Brazil",
+    "Russia",
+    "UK"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf50030"
+  },
+  "text": "Which language has the most native speakers worldwide? (include) (reason) (describe)",
+  "options": [
+    "English",
+    "Mandarin Chinese",
+    "Spanish",
+    "Hindi"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf50031"
+  },
+  "text": "Which gas do plants absorb from the atmosphere? (personal)",
+  "options": [
+    "Oxygen",
+    "Carbon Dioxide",
+    "Nitrogen",
+    "Hydrogen"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf50032"
+  },
+  "text": "In which year did World War II end? (easy)",
+  "options": [
+    "1940",
+    "1943",
+    "1945",
+    "1950"
+  ],
+  "correctOption": 2,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf50033"
+  },
+  "text": "Which country hosted the 2016 Summer Olympics? (same) (might)",
+  "options": [
+    "China",
+    "Brazil",
+    "Russia",
+    "UK"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf50034"
+  },
+  "text": "Who was the first man to walk on the moon? (parent) (administration)",
+  "options": [
+    "Buzz Aldrin",
+    "Neil Armstrong",
+    "Yuri Gagarin",
+    "Michael Collins"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf50035"
+  },
+  "text": "Which country hosted the 2016 Summer Olympics? (same) (hear) (time) (item)",
+  "options": [
+    "China",
+    "Brazil",
+    "Russia",
+    "UK"
+  ],
+  "correctOption": 1,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf50036"
+  },
+  "text": "Which country is known as the Land of the Rising Sun? (project) (yourself) (simply)",
+  "options": [
+    "China",
+    "South Korea",
+    "Thailand",
+    "Japan"
+  ],
+  "correctOption": 3,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf50037"
+  },
+  "text": "Which element has the chemical symbol 'O'? (picture)",
+  "options": [
+    "Oxygen",
+    "Gold",
+    "Iron",
+    "Hydrogen"
+  ],
+  "correctOption": 0,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "68317aea527235e03cf50038"
+  },
+  "text": "Who discovered penicillin? (degree)",
+  "options": [
+    "Isaac Newton",
+    "Albert Einstein",
+    "Alexander Fleming",
+    "Marie Curie"
+  ],
+  "correctOption": 2,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  }
+},
+{
+  "_id": {
+    "$oid": "6832f9f882853193d229ff24"
+  },
+  "text": "What is the capital of France?",
+  "options": [
+    "Paris",
+    "Berlin",
+    "Madrid",
+    "Rome"
+  ],
+  "correctOption": 0,
+  "category": {
+    "$oid": "6831790b163c0f028dd012c6"
+  },
+  "createdAt": {
+    "$date": "2025-05-25T11:07:36.762Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-25T11:07:36.762Z"
+  },
+  "__v": 0
+}]
