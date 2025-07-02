@@ -5,6 +5,7 @@ import {
   Navigate,
 } from 'react-router-dom'
 import { AuthProvider, useAuth } from './contexts/AuthContext'
+import './utils/axiosConfig'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import PlayerDashboard from './pages/player/Dashboard'
@@ -73,7 +74,7 @@ function App() {
             }
           />
           <Route
-            path="/player/quiz"
+            path="/player/quiz/:categoryId"
             element={
               <PlayerRoute>
                 <PlayerQuiz />

@@ -1,28 +1,28 @@
-
-import { useState, useEffect } from "react"
-import axios from "axios"
-import { useAuth } from "../../contexts/AuthContext"
-import Navbar from "../../components/Navbar"
+import { useState, useEffect } from 'react'
+import axios from 'axios'
+import Navbar from '../../components/Navbar'
 
 function AdminPlayers() {
-  const { user } = useAuth()
   const [players, setPlayers] = useState([])
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState("")
-  const [searchTerm, setSearchTerm] = useState("")
+  const [error, setError] = useState('')
+  const [searchTerm, setSearchTerm] = useState('')
   const [selectedPlayer, setSelectedPlayer] = useState(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   useEffect(() => {
     const fetchPlayers = async () => {
       try {
-        const token = localStorage.getItem("token")
-        const response = await axios.get("http://localhost:5000/api/admin/players", {
-          headers: { Authorization: `Bearer ${token}` },
-        })
+        const token = localStorage.getItem('token')
+        const response = await axios.get(
+          'http://localhost:5000/api/admin/players',
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        )
         setPlayers(response.data)
       } catch (error) {
-        setError("Failed to load players")
+        setError('Failed to load players')
         console.error(error)
       } finally {
         setLoading(false)
@@ -34,33 +34,43 @@ function AdminPlayers() {
 
   const handleViewPlayerDetails = async (playerId) => {
     try {
-      const token = localStorage.getItem("token")
-      const response = await axios.get(`http://localhost:5000/api/admin/players/${playerId}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+      const token = localStorage.getItem('token')
+      const response = await axios.get(
+        `http://localhost:5000/api/admin/players/${playerId}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
       setSelectedPlayer(response.data)
       setIsModalOpen(true)
     } catch (error) {
-      setError("Failed to load player details")
+      setError('Failed to load player details')
       console.error(error)
     }
   }
 
   const handleDeletePlayer = async (playerId) => {
-    if (!window.confirm("Are you sure you want to delete this player? This action cannot be undone.")) {
+    if (
+      !window.confirm(
+        'Are you sure you want to delete this player? This action cannot be undone.'
+      )
+    ) {
       return
     }
 
     try {
-      const token = localStorage.getItem("token")
-      await axios.delete(`http://localhost:5000/api/admin/players/${playerId}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+      const token = localStorage.getItem('token')
+      await axios.delete(
+        `http://localhost:5000/api/admin/players/${playerId}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      )
 
       // Update players list
       setPlayers(players.filter((player) => player._id !== playerId))
     } catch (error) {
-      setError("Failed to delete player")
+      setError('Failed to delete player')
       console.error(error)
     }
   }
@@ -69,7 +79,7 @@ function AdminPlayers() {
   const filteredPlayers = players.filter(
     (player) =>
       player.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      player.email.toLowerCase().includes(searchTerm.toLowerCase()),
+      player.email.toLowerCase().includes(searchTerm.toLowerCase())
   )
 
   if (loading) {
@@ -88,12 +98,21 @@ function AdminPlayers() {
       <Navbar />
       <div className="container mx-auto px-4 py-8">
         <div className="bg-white rounded-lg shadow-md p-6 max-w-4xl mx-auto">
-          <h1 className="text-2xl font-bold text-center mb-6 text-purple-600">Manage Players</h1>
+          <h1 className="text-2xl font-bold text-center mb-6 text-purple-600">
+            Manage Players
+          </h1>
 
-          {error && <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">{error}</div>}
+          {error && (
+            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+              {error}
+            </div>
+          )}
 
           <div className="mb-6">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="search">
+            <label
+              className="block text-gray-700 text-sm font-bold mb-2"
+              htmlFor="search"
+            >
               Search Players
             </label>
             <input
@@ -107,7 +126,9 @@ function AdminPlayers() {
           </div>
 
           {filteredPlayers.length === 0 ? (
-            <div className="text-center py-8 text-gray-500">No players found.</div>
+            <div className="text-center py-8 text-gray-500">
+              No players found.
+            </div>
           ) : (
             <div className="overflow-x-auto">
               <table className="min-w-full bg-white">
@@ -122,18 +143,25 @@ function AdminPlayers() {
                 </thead>
                 <tbody className="text-gray-600 text-sm">
                   {filteredPlayers.map((player) => (
-                    <tr key={player._id} className="border-b border-gray-200 hover:bg-gray-50">
-                      <td className="py-3 px-6 text-left whitespace-nowrap">{player.name}</td>
+                    <tr
+                      key={player._id}
+                      className="border-b border-gray-200 hover:bg-gray-50"
+                    >
+                      <td className="py-3 px-6 text-left whitespace-nowrap">
+                        {player.name}
+                      </td>
                       <td className="py-3 px-6 text-left">{player.email}</td>
-                      <td className="py-3 px-6 text-center">{player.quizzesTaken}</td>
+                      <td className="py-3 px-6 text-center">
+                        {player.quizzesTaken}
+                      </td>
                       <td className="py-3 px-6 text-center">
                         <span
                           className={`py-1 px-3 rounded-full text-xs ${
                             player.averageScore >= 70
-                              ? "bg-green-200 text-green-700"
+                              ? 'bg-green-200 text-green-700'
                               : player.averageScore >= 40
-                                ? "bg-yellow-200 text-yellow-700"
-                                : "bg-red-200 text-red-700"
+                              ? 'bg-yellow-200 text-yellow-700'
+                              : 'bg-red-200 text-red-700'
                           }`}
                         >
                           {player.averageScore.toFixed(1)}%
@@ -170,40 +198,53 @@ function AdminPlayers() {
           <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-xl font-bold">Player Details</h2>
-              <button onClick={() => setIsModalOpen(false)} className="text-gray-500 hover:text-gray-700">
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="text-gray-500 hover:text-gray-700"
+              >
                 Close
               </button>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
               <div>
-                <h3 className="font-semibold text-gray-700">Basic Information</h3>
+                <h3 className="font-semibold text-gray-700">
+                  Basic Information
+                </h3>
                 <p>
-                  <span className="font-medium">Name:</span> {selectedPlayer.name}
+                  <span className="font-medium">Name:</span>{' '}
+                  {selectedPlayer.name}
                 </p>
                 <p>
-                  <span className="font-medium">Email:</span> {selectedPlayer.email}
+                  <span className="font-medium">Email:</span>{' '}
+                  {selectedPlayer.email}
                 </p>
                 <p>
-                  <span className="font-medium">Joined:</span> {new Date(selectedPlayer.createdAt).toLocaleDateString()}
+                  <span className="font-medium">Joined:</span>{' '}
+                  {new Date(selectedPlayer.createdAt).toLocaleDateString()}
                 </p>
               </div>
 
               <div>
                 <h3 className="font-semibold text-gray-700">Quiz Statistics</h3>
                 <p>
-                  <span className="font-medium">Quizzes Taken:</span> {selectedPlayer.quizzesTaken}
+                  <span className="font-medium">Quizzes Taken:</span>{' '}
+                  {selectedPlayer.quizzesTaken}
                 </p>
                 <p>
-                  <span className="font-medium">Average Score:</span> {selectedPlayer.averageScore.toFixed(1)}%
+                  <span className="font-medium">Average Score:</span>{' '}
+                  {selectedPlayer.averageScore.toFixed(1)}%
                 </p>
                 <p>
-                  <span className="font-medium">Best Score:</span> {selectedPlayer.bestScore}%
+                  <span className="font-medium">Best Score:</span>{' '}
+                  {selectedPlayer.bestScore}%
                 </p>
               </div>
             </div>
 
-            <h3 className="font-semibold text-gray-700 mb-2">Recent Quiz History</h3>
+            <h3 className="font-semibold text-gray-700 mb-2">
+              Recent Quiz History
+            </h3>
             {selectedPlayer.recentQuizzes.length === 0 ? (
               <p className="text-gray-500">No quiz history available.</p>
             ) : (
@@ -219,16 +260,20 @@ function AdminPlayers() {
                   <tbody className="text-gray-600 text-sm">
                     {selectedPlayer.recentQuizzes.map((quiz) => (
                       <tr key={quiz._id} className="border-b border-gray-200">
-                        <td className="py-2 px-4 text-left">{new Date(quiz.date).toLocaleDateString()}</td>
-                        <td className="py-2 px-4 text-left">{quiz.categoryName}</td>
+                        <td className="py-2 px-4 text-left">
+                          {new Date(quiz.date).toLocaleDateString()}
+                        </td>
+                        <td className="py-2 px-4 text-left">
+                          {quiz.categoryName}
+                        </td>
                         <td className="py-2 px-4 text-center">
                           <span
                             className={`py-1 px-2 rounded-full text-xs ${
                               quiz.scorePercentage >= 70
-                                ? "bg-green-200 text-green-700"
+                                ? 'bg-green-200 text-green-700'
                                 : quiz.scorePercentage >= 40
-                                  ? "bg-yellow-200 text-yellow-700"
-                                  : "bg-red-200 text-red-700"
+                                ? 'bg-yellow-200 text-yellow-700'
+                                : 'bg-red-200 text-red-700'
                             }`}
                           >
                             {quiz.scorePercentage}%

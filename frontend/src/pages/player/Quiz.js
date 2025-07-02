@@ -1,7 +1,14 @@
 import { useState, useEffect, useRef } from 'react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
-import axios from 'axios'
+import {
+  Link,
+  useLocation,
+  useNavigate,
+  useParams,
+  useSearchParams,
+} from 'react-router-dom'
+import axios from '../../utils/axiosConfig'
 import { useAuth } from '../../contexts/AuthContext'
+import { toast } from 'react-toastify'
 
 // ✅ Internal Navbar Component (with disable logic)
 function Navbar({ disableNav }) {
@@ -116,204 +123,375 @@ function Navbar({ disableNav }) {
   )
 }
 
-function PlayerQuiz() {
-  const location = useLocation()
+function Quiz() {
+  const { categoryId } = useParams()
+  const [searchParams] = useSearchParams()
+  const difficulty = searchParams.get('difficulty') || 'medium'
+  const count = parseInt(searchParams.get('count')) || 10
   const navigate = useNavigate()
-  const { categoryId, questionCount } = location.state || {}
+  const { user } = useAuth()
+  const mounted = useRef(true)
 
   const [questions, setQuestions] = useState([])
-  const [currentAnswers, setCurrentAnswers] = useState({})
+  const [userAnswers, setUserAnswers] = useState({})
+  const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
-  const [quizCompleted, setQuizCompleted] = useState(false)
+  const [quizSubmitted, setQuizSubmitted] = useState(false)
   const [score, setScore] = useState(0)
-
-  const fetchedRef = useRef(false)
+  const [stats, setStats] = useState({
+    easy: { correct: 0, total: 0 },
+    medium: { correct: 0, total: 0 },
+    hard: { correct: 0, total: 0 },
+  })
 
   useEffect(() => {
-    if (!categoryId || !questionCount) {
-      navigate('/player/dashboard', { replace: true })
+    return () => {
+      mounted.current = false
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!categoryId || !user) {
+      navigate('/player/dashboard')
       return
     }
 
-    const fetchQuestions = async () => {
-      if (fetchedRef.current) return
-      fetchedRef.current = true
-
+    const fetchData = async () => {
       try {
-        const response = await axios.get(
-          'http://localhost:5000/api/questions/quiz',
-          {
-            params: { categoryId, count: questionCount },
-          }
-        )
-
-        const uniqueMap = new Map()
-        response.data.forEach((q) => {
-          if (!uniqueMap.has(q._id)) {
-            uniqueMap.set(q._id, q)
-          }
+        setLoading(true)
+        const response = await axios.post(`/api/quiz/questions`, {
+          categoryId,
+          difficulty,
+          count,
         })
 
-        setQuestions(Array.from(uniqueMap.values()))
+        if (!mounted.current) return
+
+        if (!response.data || response.data.length === 0) {
+          throw new Error(
+            'No questions available for this category and difficulty'
+          )
+        }
+
+        setQuestions(response.data)
+        setError('')
       } catch (err) {
-        setError('Failed to load questions')
-        console.error(err)
+        if (!mounted.current) return
+        const message = err.response?.data?.message || err.message
+        setError(message)
+        toast.error(message)
+        if (err.response?.status === 401) {
+          navigate('/login')
+        } else {
+          navigate('/player/dashboard')
+        }
+      } finally {
+        if (mounted.current) {
+          setLoading(false)
+        }
       }
     }
 
-    fetchQuestions()
+    fetchData()
+  }, [categoryId, difficulty, count, navigate, user])
 
-    window.history.pushState(null, '', window.location.href)
-    const onPopState = () => {
-      if (!quizCompleted) {
-        window.history.pushState(null, '', window.location.href)
-      }
-    }
-    const onBeforeUnload = (e) => {
-      if (!quizCompleted) {
-        e.preventDefault()
-        e.returnValue = ''
-      }
-    }
-
-    window.addEventListener('popstate', onPopState)
-    window.addEventListener('beforeunload', onBeforeUnload)
-
-    return () => {
-      window.removeEventListener('popstate', onPopState)
-      window.removeEventListener('beforeunload', onBeforeUnload)
-    }
-  }, [categoryId, questionCount, navigate, quizCompleted])
-
-  const handleAnswerSelect = (questionId, optionIndex) => {
-    if (quizCompleted) return
-    setCurrentAnswers((prev) => ({ ...prev, [questionId]: optionIndex }))
-    const question = questions.find((q) => q._id === questionId)
-    if (question && question.correctOption === optionIndex) {
-      setScore((prev) => prev + 1)
+  const calculatePoints = (difficulty) => {
+    switch (difficulty) {
+      case 'easy':
+        return 1
+      case 'medium':
+        return 2
+      case 'hard':
+        return 3
+      default:
+        return 1
     }
   }
 
-  const handleSubmitQuiz = async () => {
-    try {
-      const token = localStorage.getItem('token')
-      const results = questions.map((q) => ({
-        questionId: q._id,
-        selectedOption: currentAnswers[q._id] ?? null,
-        isCorrect: currentAnswers[q._id] === q.correctOption,
-      }))
+  const handleAnswer = (questionId, selectedOption) => {
+    setUserAnswers((prev) => ({
+      ...prev,
+      [questionId]: selectedOption,
+    }))
+  }
 
-      await axios.post(
-        'http://localhost:5000/api/quiz/submit',
-        { categoryId, results, score },
-        { headers: { Authorization: `Bearer ${token}` } }
+  const handleSubmit = async () => {
+    // Check if all questions are answered
+    const unansweredCount = questions.length - Object.keys(userAnswers).length
+    if (unansweredCount > 0) {
+      toast.warning(
+        `Please answer all questions. ${unansweredCount} remaining.`
       )
-
-      setQuizCompleted(true)
-    } catch (err) {
-      setError('Failed to submit quiz')
-      console.error(err)
+      return
     }
+
+    try {
+      // Calculate score and stats
+      let totalScore = 0
+      const newStats = {
+        easy: { correct: 0, total: 0 },
+        medium: { correct: 0, total: 0 },
+        hard: { correct: 0, total: 0 },
+      }
+
+      const formattedAnswers = questions.map((question) => {
+        const selectedOption = userAnswers[question._id]
+        const isCorrect = selectedOption === question.correctOption
+        const points = isCorrect ? calculatePoints(question.difficulty) : 0
+        totalScore += points
+
+        // Update stats
+        newStats[question.difficulty].total += 1
+        if (isCorrect) {
+          newStats[question.difficulty].correct += 1
+        }
+
+        return {
+          questionId: question._id,
+          selectedOption,
+          isCorrect,
+          points,
+          difficulty: question.difficulty,
+        }
+      })
+
+      // Submit to backend
+      await axios.post('/api/quiz/submit', {
+        categoryId,
+        answers: formattedAnswers,
+        score: totalScore,
+        stats: newStats,
+      })
+
+      setScore(totalScore)
+      setStats(newStats)
+      setQuizSubmitted(true)
+      toast.success('Quiz submitted successfully!')
+    } catch (error) {
+      toast.error('Failed to submit quiz. Please try again.')
+      console.error(error)
+    }
+  }
+
+  const getDifficultyColor = (difficulty) => {
+    switch (difficulty) {
+      case 'easy':
+        return 'text-green-600'
+      case 'medium':
+        return 'text-yellow-600'
+      case 'hard':
+        return 'text-red-600'
+      default:
+        return 'text-gray-600'
+    }
+  }
+
+  const getOptionStyle = (question, optionValue) => {
+    if (!quizSubmitted) {
+      return userAnswers[question._id] === optionValue
+        ? 'bg-blue-100 border-blue-500'
+        : 'hover:bg-gray-50'
+    }
+
+    // After submission
+    const isCorrect = question.correctOption === optionValue
+    const wasSelected = userAnswers[question._id] === optionValue
+
+    if (isCorrect && wasSelected) {
+      return 'bg-green-100 border-green-500' // Correct answer and user selected it
+    }
+    if (isCorrect) {
+      return 'bg-green-100 border-green-500 ring-2 ring-green-500' // Correct answer but user didn't select it
+    }
+    if (wasSelected) {
+      return 'bg-red-100 border-red-500' // User selected wrong answer
+    }
+    return 'opacity-50' // Neither correct nor selected
+  }
+
+  const getOptionLabel = (question, optionValue) => {
+    if (!quizSubmitted) return null
+
+    const isCorrect = question.correctOption === optionValue
+    const wasSelected = userAnswers[question._id] === optionValue
+
+    if (isCorrect && wasSelected) {
+      return (
+        <span className="ml-2 text-green-600 text-sm">✓ Correct answer</span>
+      )
+    }
+    if (isCorrect) {
+      return (
+        <span className="ml-2 text-green-600 text-sm">✓ Correct answer</span>
+      )
+    }
+    if (wasSelected) {
+      return <span className="ml-2 text-red-600 text-sm">✗ Your answer</span>
+    }
+    return null
+  }
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gray-100">
+        <Navbar disableNav={true} />
+        <div className="container mx-auto px-4 py-8">
+          <div className="text-center">Loading questions...</div>
+        </div>
+      </div>
+    )
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-gray-100">
+        <Navbar disableNav={true} />
+        <div className="container mx-auto px-4 py-8">
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+            {error}
+          </div>
+        </div>
+      </div>
+    )
   }
 
   return (
     <div className="min-h-screen bg-gray-100">
-      <Navbar disableNav={!quizCompleted} />
+      <Navbar disableNav={!quizSubmitted} />
       <div className="container mx-auto px-4 py-8">
-        <div className="bg-white rounded-lg shadow-md p-6 max-w-3xl mx-auto">
+        <div className="bg-white rounded-lg shadow-md p-6 mb-8">
           <div className="flex justify-between items-center mb-6">
-            <h1 className="text-2xl font-bold text-purple-600">
-              {quizCompleted ? 'Quiz Completed!' : 'Quiz in Progress'}
-            </h1>
-            <div className="text-lg font-semibold">
-              Score: {score} / {questions.length}
+            <div>
+              <h1 className="text-2xl font-bold text-gray-800">
+                Quiz - {questions[0]?.category?.name}
+              </h1>
+              <p className="text-sm text-gray-600 mt-1">
+                {count} Questions -{' '}
+                {difficulty.charAt(0).toUpperCase() + difficulty.slice(1)}{' '}
+                Difficulty
+              </p>
             </div>
+            <span className={`font-semibold ${getDifficultyColor(difficulty)}`}>
+              {difficulty.charAt(0).toUpperCase() + difficulty.slice(1)}
+            </span>
           </div>
 
-          {error && (
-            <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
-              {error}
+          {quizSubmitted && (
+            <div className="mb-6 p-4 bg-gray-50 rounded-lg">
+              <h2 className="text-xl font-bold mb-2">Quiz Results</h2>
+              <p className="text-lg mb-2">Total Score: {score} points</p>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {Object.entries(stats).map(([diff, stat]) => (
+                  <div
+                    key={diff}
+                    className={`p-3 rounded-lg ${
+                      diff === 'easy'
+                        ? 'bg-green-50'
+                        : diff === 'medium'
+                        ? 'bg-yellow-50'
+                        : 'bg-red-50'
+                    }`}
+                  >
+                    <p className={`font-medium ${getDifficultyColor(diff)}`}>
+                      {diff.charAt(0).toUpperCase() + diff.slice(1)}
+                    </p>
+                    <p className="text-sm">
+                      {stat.correct}/{stat.total} correct (
+                      {Math.round((stat.correct / stat.total) * 100) || 0}%)
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
           )}
 
-          <div className="space-y-8">
-            {questions.map((q, i) => (
-              <div key={q._id} className="border rounded-lg p-4">
-                <h3 className="text-lg font-semibold mb-3">
-                  {i + 1}. {q.text}
-                </h3>
-                <div className="space-y-2">
-                  {q.options.map((option, j) => {
-                    const isSelected = currentAnswers[q._id] === j
-                    const isCorrect = q.correctOption === j
-                    const showCorrect =
-                      quizCompleted &&
-                      (isCorrect
-                        ? 'bg-green-100 border-green-400'
-                        : isSelected
-                        ? 'bg-red-100 border-red-400'
-                        : 'border-gray-300')
-
-                    const classes = quizCompleted
-                      ? `p-3 rounded-md border ${showCorrect}`
-                      : `p-3 rounded-md cursor-pointer border transition-colors ${
-                          isSelected
-                            ? 'bg-blue-100 border-blue-400'
-                            : 'hover:bg-gray-100 border-gray-300'
-                        }`
-
-                    return (
-                      <div
-                        key={j}
-                        onClick={() =>
-                          !quizCompleted && handleAnswerSelect(q._id, j)
-                        }
-                        className={classes}
-                      >
-                        <div className="flex items-start">
-                          <div className="flex-shrink-0 w-6">
-                            {String.fromCharCode(65 + j)}.
-                          </div>
-                          <div className="ml-2">{option}</div>
-                        </div>
-                      </div>
-                    )
-                  })}
-                </div>
-                {quizCompleted && (
-                  <p className="mt-2 text-sm text-gray-600">
-                    Correct Answer:{' '}
-                    <strong>
-                      {String.fromCharCode(65 + q.correctOption)}.{' '}
-                      {q.options[q.correctOption]}
-                    </strong>
+          <div className="space-y-6">
+            {questions.map((question, index) => (
+              <div
+                key={question._id}
+                className="p-4 border rounded-lg hover:shadow-sm transition-shadow"
+              >
+                <div className="flex justify-between items-start mb-4">
+                  <p className="text-lg font-medium">
+                    {index + 1}. {question.text}
                   </p>
+                  <span
+                    className={`px-2 py-1 rounded-full text-sm ${getDifficultyColor(
+                      question.difficulty
+                    )} bg-opacity-10`}
+                  >
+                    {question.difficulty.charAt(0).toUpperCase() +
+                      question.difficulty.slice(1)}
+                  </span>
+                </div>
+                <div className="space-y-2">
+                  {question.options.map((option, optionIndex) => (
+                    <div
+                      key={optionIndex}
+                      className="flex items-center justify-between"
+                    >
+                      <button
+                        onClick={() =>
+                          !quizSubmitted && handleAnswer(question._id, option)
+                        }
+                        className={`flex-grow text-left p-3 border rounded-md transition-colors ${getOptionStyle(
+                          question,
+                          option
+                        )}`}
+                        disabled={quizSubmitted}
+                      >
+                        <span className="flex items-center justify-between">
+                          <span>{option}</span>
+                          {getOptionLabel(question, option)}
+                        </span>
+                      </button>
+                    </div>
+                  ))}
+                </div>
+                {quizSubmitted && (
+                  <div className="mt-3 text-sm">
+                    {userAnswers[question._id] === question.correctOption ? (
+                      <p className="text-green-600">
+                        ✓ Correct! You earned{' '}
+                        {calculatePoints(question.difficulty)} points
+                      </p>
+                    ) : (
+                      <p className="text-red-600">
+                        ✗ Incorrect. The correct answer was:{' '}
+                        {question.correctOption}
+                      </p>
+                    )}
+                  </div>
                 )}
               </div>
             ))}
           </div>
 
-          <div className="mt-8 flex justify-end">
-            {!quizCompleted ? (
+          {!quizSubmitted && (
+            <div className="mt-6">
               <button
-                onClick={handleSubmitQuiz}
-                className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 rounded"
+                onClick={handleSubmit}
+                className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors"
               >
                 Submit Quiz
               </button>
-            ) : (
+            </div>
+          )}
+
+          {quizSubmitted && (
+            <div className="mt-6">
               <button
                 onClick={() => navigate('/player/dashboard')}
-                className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-6 rounded"
+                className="w-full bg-gray-600 text-white py-2 px-4 rounded-md hover:bg-gray-700 transition-colors"
               >
-                Return to Dashboard
+                Back to Dashboard
               </button>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
     </div>
   )
 }
 
-export default PlayerQuiz
+export default Quiz

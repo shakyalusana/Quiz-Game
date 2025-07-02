@@ -1,155 +1,157 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const Question = require("../models/Question");
-const Category = require("../models/Category");
-const auth = require("../middleware/auth");
-const adminAuth = require("../middleware/adminAuth");
-const { body, validationResult } = require("express-validator");
+const express = require('express')
+const mongoose = require('mongoose')
+const Question = require('../models/Question')
+const Category = require('../models/Category')
+const auth = require('../middleware/auth')
+const adminAuth = require('../middleware/adminAuth')
+const { body, validationResult } = require('express-validator')
+const validateQuestion = require('../middleware/validateQuestion')
 
-const router = express.Router();
+const router = express.Router()
 
 // PUBLIC route - Get quiz questions
-router.get("/quiz", async (req, res) => {
+router.get('/quiz', async (req, res) => {
   try {
-    const { categoryId, count = 5 } = req.query;
+    const { categoryId, count = 5 } = req.query
 
     if (!categoryId) {
-      return res.status(400).json({ message: "Category ID is required" });
+      return res.status(400).json({ message: 'Category ID is required' })
     }
 
     const questions = await Question.aggregate([
       { $match: { category: new mongoose.Types.ObjectId(categoryId) } },
       { $sample: { size: Number(count) } },
-    ]);
+    ])
 
-    await Question.populate(questions, { path: "category", select: "name" });
+    await Question.populate(questions, { path: 'category', select: 'name' })
 
-    res.json(questions);
+    res.json(questions)
   } catch (error) {
-    console.error("Error fetching quiz questions:", error);
-    res.status(500).json({ message: "Server error" });
+    console.error('Error fetching quiz questions:', error)
+    res.status(500).json({ message: 'Server error' })
   }
-});
+})
 
 // ✅ PROTECTED routes (admin only)
-router.get("/", [auth, adminAuth], async (req, res) => {
+router.get('/', auth, async (req, res) => {
   try {
-    const questions = await Question.find()
-      .populate("category", "name")
-      .sort("-createdAt");
-    res.json(questions);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Server error" });
+    const questions = await Question.find().populate('category')
+    res.json(questions)
+  } catch (err) {
+    res.status(500).json({ message: err.message })
   }
-});
+})
 
-router.get("/:id", [auth, adminAuth], async (req, res) => {
+router.get('/:id', [auth, adminAuth], async (req, res) => {
   try {
-    const question = await Question.findById(req.params.id).populate("category", "name");
+    const question = await Question.findById(req.params.id).populate(
+      'category',
+      'name'
+    )
     if (!question) {
-      return res.status(404).json({ message: "Question not found" });
+      return res.status(404).json({ message: 'Question not found' })
     }
-    res.json(question);
+    res.json(question)
   } catch (error) {
-    console.error(error);
-    if (error.kind === "ObjectId") {
-      return res.status(400).json({ message: "Invalid question ID" });
+    console.error(error)
+    if (error.kind === 'ObjectId') {
+      return res.status(400).json({ message: 'Invalid question ID' })
     }
-    res.status(500).json({ message: "Server error" });
+    res.status(500).json({ message: 'Server error' })
   }
-});
-const validateQuestion = [
-  body("text")
-    .trim()
-    .notEmpty()
-    .withMessage("Question text is required"),
+})
 
-  body("options")
-    .isArray({ min: 2 })
-    .withMessage("Options must be an array with at least 2 items")
-    .custom((opts) => opts.every(opt => typeof opt === "string" && opt.trim().length > 0))
-    .withMessage("Each option must be a non-empty string"),
-
-  body("correctOption")
-    .isInt({ min: 0 }) // must be an integer >= 0
-    .withMessage("Correct option must be a valid index")
-    .custom((value, { req }) => {
-      const options = req.body.options;
-      if (!Array.isArray(options)) return false;
-      return value >= 0 && value < options.length; // check index bounds
-    })
-    .withMessage("Correct option index must be within the range of options"),
-
-  body("categoryId")
-    .notEmpty()
-    .withMessage("Category ID is required")
-    .custom((value) => mongoose.Types.ObjectId.isValid(value))
-    .withMessage("Invalid category ID"),
-];
-
-
-router.post("/", [auth, adminAuth, ...validateQuestion], async (req, res) => {
-  // 1️⃣  gather validation errors (if any)
-  const errors = validationResult(req);
-  if (!errors.isEmpty()) {
-    // ⚠️  send them back in the same shape express-validator uses
-    return res.status(400).json({ errors: errors.array() });
-  }
-
+// Get questions by difficulty
+router.get('/difficulty/:level', auth, async (req, res) => {
   try {
-    const { text, options, categoryId, correctOption } = req.body;
+    const { level } = req.params
+    if (!['easy', 'medium', 'hard'].includes(level)) {
+      return res.status(400).json({ message: 'Invalid difficulty level' })
+    }
+    const questions = await Question.find({ difficulty: level }).populate(
+      'category'
+    )
+    res.json(questions)
+  } catch (err) {
+    res.status(500).json({ message: err.message })
+  }
+})
+
+// Get question count for a category
+router.get('/count/:categoryId', auth, async (req, res) => {
+  try {
+    const count = await Question.countDocuments({
+      category: req.params.categoryId,
+    })
+    res.json({ count })
+  } catch (error) {
+    console.error('Error getting question count:', error)
+    res.status(500).json({ message: 'Error getting question count' })
+  }
+})
+
+router.post('/', [auth, adminAuth, validateQuestion], async (req, res) => {
+  try {
+    const {
+      text,
+      options,
+      correctOption,
+      category,
+      difficulty = 'medium',
+    } = req.body
 
     const question = new Question({
       text,
       options,
       correctOption,
-      category: categoryId,
-    });
+      category,
+      difficulty,
+    })
 
-    await question.save();
-    await question.populate("category", "name");
-
-    res.status(201).json(question);
-  } catch (error) {
-    console.error("Error saving question:", error);
-    res.status(500).json({ message: "Internal server error" });
+    const newQuestion = await question.save()
+    await newQuestion.populate('category')
+    res.status(201).json(newQuestion)
+  } catch (err) {
+    res.status(400).json({ message: err.message })
   }
-});
+})
 
-router.put("/:id", [auth, adminAuth], async (req, res) => {
+router.patch('/:id', [auth, adminAuth, validateQuestion], async (req, res) => {
   try {
-    const { text, options, categoryId, correctOption } = req.body;
+    const { text, options, correctOption, category, difficulty } = req.body
+    const updates = {}
 
-    const question = await Question.findById(req.params.id);
-    if (!question) return res.status(404).json({ message: "Question not found" });
+    if (text) updates.text = text
+    if (options) updates.options = options
+    if (correctOption !== undefined) updates.correctOption = correctOption
+    if (category) updates.category = category
+    if (difficulty) updates.difficulty = difficulty
 
-    question.text = text;
-    question.options = options;
-    question.correctOption = correctOption;
-    question.category = categoryId;
+    const question = await Question.findByIdAndUpdate(req.params.id, updates, {
+      new: true,
+    }).populate('category')
 
-    await question.save();
-    await question.populate("category", "name");
+    if (!question) {
+      return res.status(404).json({ message: 'Question not found' })
+    }
 
-    res.json(question);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Server error" });
+    res.json(question)
+  } catch (err) {
+    res.status(400).json({ message: err.message })
   }
-});
+})
 
-router.delete("/:id", [auth, adminAuth], async (req, res) => {
+router.delete('/:id', [auth, adminAuth], async (req, res) => {
   try {
-    const question = await Question.findById(req.params.id);
-    if (!question) return res.status(404).json({ message: "Question not found" });
-
-    await question.remove();
-    res.json({ message: "Question deleted" });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Server error" });
+    const question = await Question.findById(req.params.id)
+    if (!question) {
+      return res.status(404).json({ message: 'Question not found' })
+    }
+    await question.deleteOne()
+    res.json({ message: 'Question deleted' })
+  } catch (err) {
+    res.status(500).json({ message: err.message })
   }
-});
+})
 
-module.exports = router;
+module.exports = router

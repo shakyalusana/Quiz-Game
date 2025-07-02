@@ -1,0 +1,412 @@
+[
+  {
+    "text": "What does HTML stand for?",
+    "options": [
+      "Hyper Trainer Marking Language",
+      "HyperText Markup Language",
+      "HyperText Markdown Language",
+      "None of the above"
+    ],
+    "correctOption": 1,
+    "difficulty": "easy",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "Which tag is used to create a hyperlink in HTML?",
+    "options": ["<a>", "<link>", "<href>", "<hyper>"],
+    "correctOption": 0,
+    "difficulty": "easy",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "What does CSS stand for?",
+    "options": [
+      "Computer Style Sheets",
+      "Cascading Style Sheets",
+      "Colorful Style Sheets",
+      "Creative Style Sheets"
+    ],
+    "correctOption": 1,
+    "difficulty": "easy",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "Which property is used to change text color in CSS?",
+    "options": ["font-color", "text-color", "color", "text-style"],
+    "correctOption": 2,
+    "difficulty": "easy",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "How do you declare a JavaScript variable?",
+    "options": ["v myVar;", "variable myVar;", "var myVar;", "declare myVar;"],
+    "correctOption": 2,
+    "difficulty": "easy",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "What is the output of 2 + '2' in JavaScript?",
+    "options": ["22", "4", "undefined", "NaN"],
+    "correctOption": 0,
+    "difficulty": "medium",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "What is the correct syntax for an arrow function in JavaScript?",
+    "options": ["function => ()", "() => {}", "() -> {}", "=> () {}"],
+    "correctOption": 1,
+    "difficulty": "medium",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "Which of these is not a primitive data type in JavaScript?",
+    "options": ["String", "Boolean", "Object", "Number"],
+    "correctOption": 2,
+    "difficulty": "medium",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "What does SQL stand for?",
+    "options": [
+      "Structured Query Language",
+      "Stylish Question Language",
+      "Statement Question Language",
+      "None of the above"
+    ],
+    "correctOption": 0,
+    "difficulty": "easy",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "Which command is used to retrieve data in SQL?",
+    "options": ["GET", "SELECT", "FETCH", "PULL"],
+    "correctOption": 1,
+    "difficulty": "easy",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "Which HTTP method is used to update a resource?",
+    "options": ["GET", "POST", "PUT", "DELETE"],
+    "correctOption": 2,
+    "difficulty": "medium",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "What does REST stand for in REST API?",
+    "options": [
+      "Representational State Transfer",
+      "Request State Transfer",
+      "Remote Execution Structured Transfer",
+      "Remote State Token"
+    ],
+    "correctOption": 0,
+    "difficulty": "medium",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "Which keyword is used to inherit a class in Java?",
+    "options": ["this", "inherits", "super", "extends"],
+    "correctOption": 3,
+    "difficulty": "medium",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "Which programming language is primarily used for iOS development?",
+    "options": ["Java", "Swift", "Kotlin", "Python"],
+    "correctOption": 1,
+    "difficulty": "medium",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "What is the value of `typeof null` in JavaScript?",
+    "options": ["null", "object", "undefined", "boolean"],
+    "correctOption": 1,
+    "difficulty": "hard",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "Which keyword is used to handle exceptions in JavaScript?",
+    "options": ["try", "catch", "throw", "All of the above"],
+    "correctOption": 3,
+    "difficulty": "easy",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "What is a closure in JavaScript?",
+    "options": [
+      "A variable",
+      "A function inside a loop",
+      "Function with preserved data",
+      "A class"
+    ],
+    "correctOption": 2,
+    "difficulty": "hard",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "Which of the following is not a frontend framework?",
+    "options": ["React", "Angular", "Vue", "Node.js"],
+    "correctOption": 3,
+    "difficulty": "medium",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "Which tool is commonly used for version control?",
+    "options": ["Docker", "Git", "Jenkins", "Figma"],
+    "correctOption": 1,
+    "difficulty": "easy",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "What is the command to initialize a new Git repository?",
+    "options": ["git start", "git init", "git new", "git create"],
+    "correctOption": 1,
+    "difficulty": "easy",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "What does DOM stand for?",
+    "options": [
+      "Document Object Model",
+      "Data Object Model",
+      "Digital Order Map",
+      "Display Object Management"
+    ],
+    "correctOption": 0,
+    "difficulty": "easy",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "Which language is used to style web pages?",
+    "options": ["HTML", "JQuery", "CSS", "XML"],
+    "correctOption": 2,
+    "difficulty": "easy",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "Which JavaScript method is used to parse a JSON string?",
+    "options": [
+      "JSON.parse()",
+      "JSON.decode()",
+      "JSON.read()",
+      "JSON.stringify()"
+    ],
+    "correctOption": 0,
+    "difficulty": "medium",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "Which symbol is used for comments in JavaScript?",
+    "options": ["//", "#", "<!-- -->", "/* */"],
+    "correctOption": 0,
+    "difficulty": "easy",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "What is a Promise in JavaScript?",
+    "options": [
+      "A loop",
+      "An API call",
+      "An async object",
+      "A synchronous function"
+    ],
+    "correctOption": 2,
+    "difficulty": "medium",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "Which data structure uses FIFO?",
+    "options": ["Stack", "Queue", "Array", "Graph"],
+    "correctOption": 1,
+    "difficulty": "medium",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "Which sorting algorithm has the best average-case time complexity?",
+    "options": [
+      "Bubble Sort",
+      "Selection Sort",
+      "Quick Sort",
+      "Insertion Sort"
+    ],
+    "correctOption": 2,
+    "difficulty": "medium",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "Which keyword is used to define a constant in JavaScript?",
+    "options": ["const", "let", "var", "define"],
+    "correctOption": 0,
+    "difficulty": "easy",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "Which company developed TypeScript?",
+    "options": ["Facebook", "Google", "Microsoft", "Amazon"],
+    "correctOption": 2,
+    "difficulty": "medium",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "Which HTML element is used to define a table?",
+    "options": ["<div>", "<form>", "<table>", "<section>"],
+    "correctOption": 2,
+    "difficulty": "easy",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "What is the time complexity of binary search?",
+    "options": ["O(n)", "O(log n)", "O(n^2)", "O(1)"],
+    "correctOption": 1,
+    "difficulty": "medium",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "Which language is compiled?",
+    "options": ["HTML", "CSS", "Java", "JavaScript"],
+    "correctOption": 2,
+    "difficulty": "easy",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "Which Python keyword is used to create a function?",
+    "options": ["func", "define", "function", "def"],
+    "correctOption": 3,
+    "difficulty": "easy",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "Which operator is used for exponentiation in Python?",
+    "options": ["^", "**", "exp", "//"],
+    "correctOption": 1,
+    "difficulty": "easy",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "Which keyword defines a class in Java?",
+    "options": ["function", "define", "class", "object"],
+    "correctOption": 2,
+    "difficulty": "easy",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "Which one is not a Python data type?",
+    "options": ["List", "Tuple", "Map", "Set"],
+    "correctOption": 2,
+    "difficulty": "medium",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "Which of the following is a NoSQL database?",
+    "options": ["PostgreSQL", "MongoDB", "MySQL", "Oracle"],
+    "correctOption": 1,
+    "difficulty": "medium",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "Which shell command lists all files in a directory?",
+    "options": ["ls", "cd", "mkdir", "touch"],
+    "correctOption": 0,
+    "difficulty": "easy",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "Which tool is used for containerization?",
+    "options": ["Jenkins", "Git", "Docker", "Node"],
+    "correctOption": 2,
+    "difficulty": "medium",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "What is the extension of a JavaScript file?",
+    "options": [".java", ".js", ".jsx", ".ts"],
+    "correctOption": 1,
+    "difficulty": "easy",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "Which function is used to convert a string to integer in Python?",
+    "options": ["parseInt()", "int()", "toInt()", "strToInt()"],
+    "correctOption": 1,
+    "difficulty": "easy",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "Which operator checks for strict equality in JavaScript?",
+    "options": ["==", "!=", "===", "!=="],
+    "correctOption": 2,
+    "difficulty": "medium",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "Which language is known as the mother of all languages?",
+    "options": ["Assembly", "C", "COBOL", "Fortran"],
+    "correctOption": 1,
+    "difficulty": "hard",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "What does API stand for?",
+    "options": [
+      "Application Programming Interface",
+      "Applied Program Interface",
+      "Application Process Interface",
+      "Automated Programming Interface"
+    ],
+    "correctOption": 0,
+    "difficulty": "easy",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "What is a compiler?",
+    "options": [
+      "Runs code line-by-line",
+      "Translates entire code",
+      "Cleans up memory",
+      "Parses HTML"
+    ],
+    "correctOption": 1,
+    "difficulty": "medium",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "Which CSS property controls the text size?",
+    "options": ["font-size", "text-style", "font-weight", "size"],
+    "correctOption": 0,
+    "difficulty": "easy",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "Which of these is used for backend development?",
+    "options": ["React", "Angular", "Node.js", "Vue"],
+    "correctOption": 2,
+    "difficulty": "easy",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "Which keyword is used to create asynchronous function in JS?",
+    "options": ["async", "await", "defer", "setTimeout"],
+    "correctOption": 0,
+    "difficulty": "medium",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "Which command creates a new branch in Git?",
+    "options": [
+      "git branch <name>",
+      "git new <name>",
+      "git checkout <name>",
+      "git add <name>"
+    ],
+    "correctOption": 0,
+    "difficulty": "easy",
+    "category": "682c41c96fe24190bed33ed3"
+  },
+  {
+    "text": "What is the default port for HTTP?",
+    "options": ["443", "21", "80", "22"],
+    "correctOption": 2,
+    "difficulty": "easy",
+    "category": "682c41c96fe24190bed33ed3"
+  }
+]
