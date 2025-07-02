@@ -1,0 +1,284 @@
+[
+  {
+    "text": "Which country won the FIFA World Cup in 2018?",
+    "options": ["Brazil", "Germany", "France", "Argentina"],
+    "correctOption": 2,
+    "category": "682c41c26fe24190bed33ecf"
+  },
+  {
+    "text": "How many players are there on a basketball team on the court?",
+    "options": ["5", "6", "7", "8"],
+    "correctOption": 0,
+    "category": "682c41c26fe24190bed33ecf"
+  },
+  {
+    "text": "In which sport would you perform a slam dunk?",
+    "options": ["Football", "Basketball", "Tennis", "Volleyball"],
+    "correctOption": 1,
+    "category": "682c41c26fe24190bed33ecf"
+  },
+  {
+    "text": "What is the maximum score you can get with a single throw in darts?",
+    "options": ["50", "60", "100", "40"],
+    "correctOption": 1,
+    "category": "682c41c26fe24190bed33ecf"
+  },
+  {
+    "text": "Which country hosts the Wimbledon tennis tournament?",
+    "options": ["USA", "France", "England", "Australia"],
+    "correctOption": 2,
+    "category": "682c41c26fe24190bed33ecf"
+  },
+  {
+    "text": "How many players are there in a standard soccer team on the field?",
+    "options": ["9", "10", "11", "12"],
+    "correctOption": 2,
+    "category": "682c41c26fe24190bed33ecf"
+  },
+  {
+    "text": "Which sport is known as the 'king of sports'?",
+    "options": ["Basketball", "Football (Soccer)", "Tennis", "Cricket"],
+    "correctOption": 1,
+    "category": "682c41c26fe24190bed33ecf"
+  },
+  {
+    "text": "Which country has won the most Olympic gold medals overall?",
+    "options": ["USA", "China", "Russia", "Germany"],
+    "correctOption": 0,
+    "category": "682c41c26fe24190bed33ecf"
+  },
+  {
+    "text": "In which sport would you use a shuttlecock?",
+    "options": ["Badminton", "Table Tennis", "Squash", "Tennis"],
+    "correctOption": 0,
+    "category": "682c41c26fe24190bed33ecf"
+  },
+  {
+    "text": "Who holds the record for the most goals in a single FIFA World Cup tournament?",
+    "options": ["Pelé", "Miroslav Klose", "Ronaldo", "Just Fontaine"],
+    "correctOption": 3,
+    "category": "682c41c26fe24190bed33ecf"
+  },
+  {
+    "text": "Which sport features the terms 'birdie' and 'eagle'?",
+    "options": ["Golf", "Tennis", "Football", "Cricket"],
+    "correctOption": 0,
+    "category": "682c41c26fe24190bed33ecf"
+  },
+  {
+    "text": "How long is a standard Olympic swimming pool?",
+    "options": ["25 meters", "50 meters", "100 meters", "200 meters"],
+    "correctOption": 1,
+    "category": "682c41c26fe24190bed33ecf"
+  },
+  {
+    "text": "Which sport is associated with the Stanley Cup?",
+    "options": ["Basketball", "Ice Hockey", "Baseball", "Football"],
+    "correctOption": 1,
+    "category": "682c41c26fe24190bed33ecf"
+  },
+  {
+    "text": "Which country is famous for sumo wrestling?",
+    "options": ["China", "South Korea", "Japan", "Thailand"],
+    "correctOption": 2,
+    "category": "682c41c26fe24190bed33ecf"
+  },
+  {
+    "text": "In which sport can you perform a 'Hat-trick'?",
+    "options": ["Cricket", "Football (Soccer)", "Hockey", "All of the above"],
+    "correctOption": 3,
+    "category": "682c41c26fe24190bed33ecf"
+  },
+  {
+    "text": "Which player is known as 'The King of Tennis'?",
+    "options": ["Roger Federer", "Rafael Nadal", "Novak Djokovic", "Pete Sampras"],
+    "correctOption": 0,
+    "category": "682c41c26fe24190bed33ecf"
+  },
+  {
+    "text": "How many points is a touchdown worth in American football?",
+    "options": ["3", "6", "7", "1"],
+    "correctOption": 1,
+    "category": "682c41c26fe24190bed33ecf"
+  },
+  {
+    "text": "Which sport uses the terms 'bogey' and 'par'?",
+    "options": ["Baseball", "Golf", "Tennis", "Cricket"],
+    "correctOption": 1,
+    "category": "682c41c26fe24190bed33ecf"
+  },
+  {
+    "text": "In which sport would you find a pommel horse?",
+    "options": ["Gymnastics", "Equestrian", "Diving", "Figure Skating"],
+    "correctOption": 0,
+    "category": "682c41c26fe24190bed33ecf"
+  },
+  {
+    "text": "Which country won the first ever FIFA World Cup in 1930?",
+    "options": ["Uruguay", "Brazil", "Argentina", "Italy"],
+    "correctOption": 0,
+    "category": "682c41c26fe24190bed33ecf"
+  },
+  {
+    "text": "How many minutes is a standard professional soccer match?",
+    "options": ["60", "75", "90", "120"],
+    "correctOption": 2,
+    "category": "682c41c26fe24190bed33ecf"
+  },
+  {
+    "text": "Which sport involves the terms 'spike' and 'block'?",
+    "options": ["Basketball", "Volleyball", "Tennis", "Handball"],
+    "correctOption": 1,
+    "category": "682c41c26fe24190bed33ecf"
+  },
+  {
+    "text": "Which city hosted the Summer Olympics in 2016?",
+    "options": ["London", "Tokyo", "Rio de Janeiro", "Beijing"],
+    "correctOption": 2,
+    "category": "682c41c26fe24190bed33ecf"
+  },
+  {
+    "text": "What is the name of the trophy awarded to the NHL champions?",
+    "options": ["The Stanley Cup", "The Vince Lombardi Trophy", "The World Cup", "The Larry O'Brien Trophy"],
+    "correctOption": 0,
+    "category": "682c41c26fe24190bed33ecf"
+  },
+  {
+    "text": "In tennis, what is the term for a score of zero?",
+    "options": ["Zero", "Love", "Nil", "Duck"],
+    "correctOption": 1,
+    "category": "682c41c26fe24190bed33ecf"
+  },
+  {
+    "text": "Which sport is played on a court with a net and rackets, but the ball is hollow and made of plastic?",
+    "options": ["Tennis", "Badminton", "Table Tennis", "Squash"],
+    "correctOption": 2,
+    "category": "682c41c26fe24190bed33ecf"
+  },
+  {
+    "text": "What is the distance of a marathon race?",
+    "options": ["21.1 km", "42.195 km", "50 km", "10 km"],
+    "correctOption": 1,
+    "category": "682c41c26fe24190bed33ecf"
+  },
+  {
+    "text": "Which country has won the most Rugby World Cups?",
+    "options": ["Australia", "New Zealand", "South Africa", "England"],
+    "correctOption": 1,
+    "category": "682c41c26fe24190bed33ecf"
+  },
+  {
+    "text": "In which sport is the term 'knockout' used?",
+    "options": ["Boxing", "Football", "Basketball", "Cricket"],
+    "correctOption": 0,
+    "category": "682c41c26fe24190bed33ecf"
+  },
+  {
+    "text": "Which athlete is famous for winning 8 gold medals in a single Olympic Games?",
+    "options": ["Usain Bolt", "Michael Phelps", "Simone Biles", "Carl Lewis"],
+    "correctOption": 1,
+    "category": "682c41c26fe24190bed33ecf"
+  },
+  {
+    "text": "Which sport is also known as 'soccer' in the United States?",
+    "options": ["Rugby", "American Football", "Football", "Basketball"],
+    "correctOption": 2,
+    "category": "682c41c26fe24190bed33ecf"
+  },
+  {
+    "text": "What piece of equipment is essential in ice hockey?",
+    "options": ["Bat", "Stick", "Racket", "Glove"],
+    "correctOption": 1,
+    "category": "682c41c26fe24190bed33ecf"
+  },
+  {
+    "text": "Which country is known for the sport of cricket and has the team called 'The Proteas'?",
+    "options": ["Australia", "South Africa", "India", "England"],
+    "correctOption":1,
+"category": "682c41c26fe24190bed33ecf"
+},
+{
+"text": "Which of these is NOT a recognized Olympic sport?",
+"options": ["Surfing", "Chess", "Basketball", "Gymnastics"],
+"correctOption": 1,
+"category": "682c41c26fe24190bed33ecf"
+},
+{
+"text": "Which country won the NBA championship in 2020?",
+"options": ["Los Angeles Lakers", "Miami Heat", "Toronto Raptors", "Golden State Warriors"],
+"correctOption": 0,
+"category": "682c41c26fe24190bed33ecf"
+},
+{
+"text": "Which sport uses a puck?",
+"options": ["Field Hockey", "Ice Hockey", "Lacrosse", "Curling"],
+"correctOption": 1,
+"category": "682c41c26fe24190bed33ecf"
+},
+{
+"text": "What is the term used when a bowler gets three wickets in three consecutive balls in cricket?",
+"options": ["Hat-trick", "Century", "Double", "Triple Play"],
+"correctOption": 0,
+"category": "682c41c26fe24190bed33ecf"
+},
+{
+"text": "Who is known as the fastest man in the world?",
+"options": ["Michael Johnson", "Usain Bolt", "Carl Lewis", "Justin Gatlin"],
+"correctOption": 1,
+"category": "682c41c26fe24190bed33ecf"
+},
+{
+"text": "What sport does Serena Williams play?",
+"options": ["Badminton", "Tennis", "Table Tennis", "Squash"],
+"correctOption": 1,
+"category": "682c41c26fe24190bed33ecf"
+},
+{
+"text": "Which of these is a Winter Olympic sport?",
+"options": ["Bobsleigh", "Water Polo", "Baseball", "Rugby"],
+"correctOption": 0,
+"category": "682c41c26fe24190bed33ecf"
+},
+{
+"text": "How many holes are there in a standard round of golf?",
+"options": ["9", "12", "15", "18"],
+"correctOption": 3,
+"category": "682c41c26fe24190bed33ecf"
+},
+{
+"text": "What is the term for a perfect score in bowling?",
+"options": ["300", "200", "100", "400"],
+"correctOption": 0,
+"category": "682c41c26fe24190bed33ecf"
+},
+{
+"text": "Which country won the Cricket World Cup in 2019?",
+"options": ["England", "New Zealand", "Australia", "India"],
+"correctOption": 0,
+"category": "682c41c26fe24190bed33ecf"
+},
+{
+"text": "In which sport would you find a 'scrum'?",
+"options": ["Rugby", "Football", "Basketball", "Hockey"],
+"correctOption": 0,
+"category": "682c41c26fe24190bed33ecf"
+},
+{
+"text": "Who is the all-time top scorer in the NBA?",
+"options": ["Michael Jordan", "Kobe Bryant", "LeBron James", "Kareem Abdul-Jabbar"],
+"correctOption": 3,
+"category": "682c41c26fe24190bed33ecf"
+},
+{
+"text": "Which sport is played at the Super Bowl?",
+"options": ["Basketball", "Baseball", "American Football", "Soccer"],
+"correctOption": 2,
+"category": "682c41c26fe24190bed33ecf"
+},
+{
+"text": "Which sport has a playing field called a 'diamond'?",
+"options": ["Baseball", "Football", "Cricket", "Soccer"],
+"correctOption": 0,
+"category": "682c41c26fe24190bed33ecf"
+}
+]
