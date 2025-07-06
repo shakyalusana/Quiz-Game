@@ -29,7 +29,8 @@ const quizSchema = new mongoose.Schema(
         },
         selectedOption: {
           type: String,
-          required: true,
+          required: false,
+          default: null,
         },
         isCorrect: {
           type: Boolean,

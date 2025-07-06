@@ -11,7 +11,7 @@ import { useAuth } from '../../contexts/AuthContext'
 import { toast } from 'react-toastify'
 
 // ✅ Internal Navbar Component (with disable logic)
-function Navbar({ disableNav }) {
+function Navbar({ disableNav, timeLeft }) {
   const { user, logout } = useAuth()
   const navigate = useNavigate()
 
@@ -27,6 +27,12 @@ function Navbar({ disableNav }) {
     } else {
       navigate(to)
     }
+  }
+
+  const formatTime = (seconds) => {
+    const mins = Math.floor(seconds / 60)
+    const secs = seconds % 60
+    return `${mins}:${secs.toString().padStart(2, '0')}`
   }
 
   return (
@@ -53,6 +59,13 @@ function Navbar({ disableNav }) {
               Quiz Game
             </Link>
           </div>
+
+          {/* ⏲️ Timer visible during quiz */}
+          {timeLeft !== null && (
+            <div className="text-lg font-semibold tracking-wider">
+              ⏱️ {formatTime(timeLeft)}
+            </div>
+          )}
 
           {user && (
             <div className="flex items-center space-x-6">
@@ -137,6 +150,7 @@ function Quiz() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const [quizSubmitted, setQuizSubmitted] = useState(false)
+  const [timeUp, setTimeUp] = useState(false)
   const [score, setScore] = useState(0)
   const [stats, setStats] = useState({
     easy: { correct: 0, total: 0 },
@@ -144,11 +158,63 @@ function Quiz() {
     hard: { correct: 0, total: 0 },
   })
 
+  // Set timer duration based on difficulty
+  const getQuizDuration = (difficulty) => {
+    switch (difficulty) {
+      case 'easy':
+        return 120 // 2 minutes
+      case 'medium':
+        return 300 // 5 minutes
+      case 'hard':
+        return 540 // 9 minutes
+      default:
+        return 90 // fallback
+    }
+  }
+
+  const [timeLeft, setTimeLeft] = useState(getQuizDuration(difficulty))
+
+  // Reset timer if difficulty changes
+  useEffect(() => {
+    setTimeLeft(getQuizDuration(difficulty))
+  }, [difficulty])
+
+  // Keep latest handleSubmit ref to avoid stale closure inside timer
+  const submitRef = useRef(null)
+
+  useEffect(() => {
+    submitRef.current = handleSubmit
+  })
+
+  // Cleanup flag
   useEffect(() => {
     return () => {
       mounted.current = false
     }
   }, [])
+
+  // ⏲️ Start countdown when questions arrive
+  useEffect(() => {
+    if (loading) return // wait until loaded
+    if (quizSubmitted) return // stop when submitted
+
+    const interval = setInterval(() => {
+      setTimeLeft((prev) => {
+        if (prev <= 1) {
+          clearInterval(interval)
+          if (!quizSubmitted && submitRef.current) {
+            setTimeUp(true)
+            toast.info('Time is up! Submitting your quiz...')
+            submitRef.current(true) // force submit
+          }
+          return 0
+        }
+        return prev - 1
+      })
+    }, 1000)
+
+    return () => clearInterval(interval)
+  }, [loading, quizSubmitted])
 
   useEffect(() => {
     if (!categoryId || !user) {
@@ -215,10 +281,12 @@ function Quiz() {
     }))
   }
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (force = false) => {
+    if (quizSubmitted) return // prevent double submit
+
     // Check if all questions are answered
     const unansweredCount = questions.length - Object.keys(userAnswers).length
-    if (unansweredCount > 0) {
+    if (unansweredCount > 0 && !force) {
       toast.warning(
         `Please answer all questions. ${unansweredCount} remaining.`
       )
@@ -235,7 +303,8 @@ function Quiz() {
       }
 
       const formattedAnswers = questions.map((question) => {
-        const selectedOption = userAnswers[question._id]
+        let selectedOption = userAnswers[question._id]
+        if (typeof selectedOption === 'undefined') selectedOption = null
         const isCorrect = selectedOption === question.correctOption
         const points = isCorrect ? calculatePoints(question.difficulty) : 0
         totalScore += points
@@ -266,6 +335,7 @@ function Quiz() {
       setScore(totalScore)
       setStats(newStats)
       setQuizSubmitted(true)
+      setTimeUp(false) // reset timeUp in case of manual submit
       toast.success('Quiz submitted successfully!')
     } catch (error) {
       toast.error('Failed to submit quiz. Please try again.')
@@ -331,10 +401,22 @@ function Quiz() {
     return null
   }
 
+  // Add this effect to auto-submit when all questions are answered
+  useEffect(() => {
+    if (!loading && !quizSubmitted && questions.length > 0) {
+      const allAnswered = questions.every(
+        (q) => userAnswers[q._id] !== undefined
+      )
+      if (allAnswered) {
+        handleSubmit(true)
+      }
+    }
+  }, [userAnswers, questions, loading, quizSubmitted])
+
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-100">
-        <Navbar disableNav={true} />
+        <Navbar disableNav={true} timeLeft={null} />
         <div className="container mx-auto px-4 py-8">
           <div className="text-center">Loading questions...</div>
         </div>
@@ -345,7 +427,7 @@ function Quiz() {
   if (error) {
     return (
       <div className="min-h-screen bg-gray-100">
-        <Navbar disableNav={true} />
+        <Navbar disableNav={true} timeLeft={null} />
         <div className="container mx-auto px-4 py-8">
           <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
             {error}
@@ -357,7 +439,10 @@ function Quiz() {
 
   return (
     <div className="min-h-screen bg-gray-100">
-      <Navbar disableNav={!quizSubmitted} />
+      <Navbar
+        disableNav={!quizSubmitted}
+        timeLeft={quizSubmitted ? null : timeLeft}
+      />
       <div className="container mx-auto px-4 py-8">
         <div className="bg-white rounded-lg shadow-md p-6 mb-8">
           <div className="flex justify-between items-center mb-6">
@@ -375,6 +460,12 @@ function Quiz() {
               {difficulty.charAt(0).toUpperCase() + difficulty.slice(1)}
             </span>
           </div>
+
+          {quizSubmitted && timeUp && (
+            <div className="mb-4 p-3 bg-yellow-100 text-yellow-800 rounded text-center font-semibold">
+              Time's up! The quiz is over.
+            </div>
+          )}
 
           {quizSubmitted && (
             <div className="mb-6 p-4 bg-gray-50 rounded-lg">
@@ -450,7 +541,12 @@ function Quiz() {
                 </div>
                 {quizSubmitted && (
                   <div className="mt-3 text-sm">
-                    {userAnswers[question._id] === question.correctOption ? (
+                    {userAnswers[question._id] === undefined ? (
+                      <p className="text-yellow-600">
+                        You did not answer this question. The correct answer
+                        was: {question.correctOption}
+                      </p>
+                    ) : userAnswers[question._id] === question.correctOption ? (
                       <p className="text-green-600">
                         ✓ Correct! You earned{' '}
                         {calculatePoints(question.difficulty)} points
@@ -466,17 +562,6 @@ function Quiz() {
               </div>
             ))}
           </div>
-
-          {!quizSubmitted && (
-            <div className="mt-6">
-              <button
-                onClick={handleSubmit}
-                className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition-colors"
-              >
-                Submit Quiz
-              </button>
-            </div>
-          )}
 
           {quizSubmitted && (
             <div className="mt-6">
