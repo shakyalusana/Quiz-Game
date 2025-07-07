@@ -157,7 +157,7 @@ useEffect(() => {
                     <thead>
                       <tr className="bg-gray-100 text-gray-600 text-sm leading-normal">
                         <th className="py-3 px-4 text-left">Player</th>
-                        <th className="py-3 px-4 text-left">Last Quiz</th>
+                        
                         <th className="py-3 px-4 text-center">Score</th>
                       </tr>
                     </thead>
@@ -165,7 +165,7 @@ useEffect(() => {
                       {recentPlayers.map((player) => (
                         <tr key={player._id} className="border-b border-gray-200 hover:bg-gray-100">
                           <td className="py-3 px-4 text-left whitespace-nowrap">{player.name}</td>
-                          <td className="py-3 px-4 text-left">{new Date(player.lastQuizDate).toLocaleDateString()}</td>
+                          
                           <td className="py-3 px-4 text-center">
                             <span
                               className={`py-1 px-2 rounded-full text-xs ${
