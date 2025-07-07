@@ -3,12 +3,12 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../../components/Navbar";
 
-function PlayerHistory() {
+function History() {
   const navigate = useNavigate();
   const [quizHistory, setQuizHistory] = useState([]);
   const [stats, setStats] = useState({
     totalQuizzes: 0,
-    averageScore: 0,  // default to 0 to avoid null issues
+    averageScore: 0,
     bestCategory: "",
     worstCategory: "",
   });
@@ -29,9 +29,9 @@ function PlayerHistory() {
         console.log("Decoded token:", decodedToken);
 
         const response = await axios.get("http://localhost:5000/api/player/history", {
-          headers: { 
-            Authorization: `Bearer ${token}`, 
-            "x-decoded-token": JSON.stringify(decodedToken)  // custom header with decoded token
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "x-decoded-token": JSON.stringify(decodedToken)
           },
         });
 
@@ -55,6 +55,15 @@ function PlayerHistory() {
 
   const handleBackToDashboard = () => {
     navigate("/player/dashboard");
+  };
+
+  const getTotalQuestions = (quiz) => {
+    return quiz.totalQuestions || quiz.questions?.length || 0;
+  };
+
+  const getValidScore = (quiz) => {
+    const total = getTotalQuestions(quiz);
+    return Math.min(quiz.score, total);
   };
 
   if (loading) {
@@ -93,19 +102,10 @@ function PlayerHistory() {
             <div className="bg-purple-50 p-4 rounded-lg">
               <h2 className="text-lg font-semibold mb-2">Statistics</h2>
               <div className="space-y-2">
-                <p>
-                  <span className="font-medium">Total Quizzes:</span> {stats.totalQuizzes}
-                </p>
-                <p>
-                  <span className="font-medium">Average Score:</span>{" "}
-                  {stats.averageScore != null ? stats.averageScore.toFixed(2) : "0.00"}%
-                </p>
-                <p>
-                  <span className="font-medium">Best Category:</span> {stats.bestCategory || "N/A"}
-                </p>
-                <p>
-                  <span className="font-medium">Worst Category:</span> {stats.worstCategory || "N/A"}
-                </p>
+                <p><span className="font-medium">Total Quizzes:</span> {stats.totalQuizzes}</p>
+                <p><span className="font-medium">Average Score:</span> {stats.averageScore != null ? stats.averageScore.toFixed(2) : "0.00"}%</p>
+                <p><span className="font-medium">Best Category:</span> {stats.bestCategory || "N/A"}</p>
+                <p><span className="font-medium">Worst Category:</span> {stats.worstCategory || "N/A"}</p>
               </div>
             </div>
           </div>
@@ -119,7 +119,6 @@ function PlayerHistory() {
               <table className="min-w-full bg-white">
                 <thead>
                   <tr className="bg-gray-100 text-gray-600 uppercase text-sm leading-normal">
-                    <th className="py-3 px-6 text-left">Date</th>
                     <th className="py-3 px-6 text-left">Category</th>
                     <th className="py-3 px-6 text-center">Questions</th>
                     <th className="py-3 px-6 text-center">Score</th>
@@ -127,31 +126,32 @@ function PlayerHistory() {
                   </tr>
                 </thead>
                 <tbody className="text-gray-600 text-sm">
-                  {quizHistory.map((quiz) => (
-                    <tr key={quiz._id} className="border-b border-gray-200 hover:bg-gray-50">
-                      <td className="py-3 px-6 text-left whitespace-nowrap">
-                        {new Date(quiz.date).toLocaleDateString()}
-                      </td>
-                      <td className="py-3 px-6 text-left">{quiz.category.name}</td>
-                      <td className="py-3 px-6 text-center">{quiz.totalQuestions}</td>
-                      <td className="py-3 px-6 text-center">
-                        {quiz.score} / {quiz.totalQuestions}
-                      </td>
-                      <td className="py-3 px-6 text-center">
-                        <span
-                          className={`py-1 px-3 rounded-full text-xs ${
-                            (quiz.score / quiz.totalQuestions) * 100 >= 70
-                              ? "bg-green-200 text-green-700"
-                              : (quiz.score / quiz.totalQuestions) * 100 >= 40
-                              ? "bg-yellow-200 text-yellow-700"
-                              : "bg-red-200 text-red-700"
-                          }`}
-                        >
-                          {((quiz.score / quiz.totalQuestions) * 100).toFixed(0)}%
-                        </span>
-                      </td>
-                    </tr>
-                  ))}
+                  {quizHistory.map((quiz) => {
+                    const totalQuestions = getTotalQuestions(quiz);
+                    const validScore = getValidScore(quiz);
+                    const percentage = totalQuestions > 0 ? (validScore / totalQuestions) * 100 : 0;
+
+                    return (
+                      <tr key={quiz._id} className="border-b border-gray-200 hover:bg-gray-50">
+                        <td className="py-3 px-6 text-left">{quiz.category?.name || "N/A"}</td>
+                        <td className="py-3 px-6 text-center">{totalQuestions}</td>
+                        <td className="py-3 px-6 text-center">{validScore} / {totalQuestions}</td>
+                        <td className="py-3 px-6 text-center">
+                          <span
+                            className={`py-1 px-3 rounded-full text-xs ${
+                              percentage >= 70
+                                ? "bg-green-200 text-green-700"
+                                : percentage >= 40
+                                ? "bg-yellow-200 text-yellow-700"
+                                : "bg-red-200 text-red-700"
+                            }`}
+                          >
+                            {percentage.toFixed(0)}%
+                          </span>
+                        </td>
+                      </tr>
+                    );
+                  })}
                 </tbody>
               </table>
             </div>
@@ -162,4 +162,4 @@ function PlayerHistory() {
   );
 }
 
-export default PlayerHistory;
+export default History;
