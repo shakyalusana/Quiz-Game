@@ -12,7 +12,7 @@ import PlayerDashboard from './pages/player/Dashboard'
 import PlayerQuiz from './pages/player/Quiz'
 import PlayerQuizReview from './pages/player/PlayerQuizReview'
 import PlayerHistory from './pages/player/History'
-import AdminDashboard from './pages/admin/Dashboard'
+import AdminDashboard from "./pages/admin/Dashboard";
 import AdminQuestions from './pages/admin/Questions'
 import AdminLeaderboard from './pages/admin/Leaderboard'
 import AdminPlayers from './pages/admin/Players'
@@ -102,10 +102,7 @@ function App() {
           <Route
             path="/admin/dashboard"
             element={
-              <AdminRoute>
-                <AdminDashboard />
-              </AdminRoute>
-            }
+                <AdminDashboard />} 
           />
           <Route
             path="/admin/questions"
